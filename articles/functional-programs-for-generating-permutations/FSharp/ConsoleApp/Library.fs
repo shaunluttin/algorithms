@@ -22,8 +22,5 @@ module Permutations =
     let insert a p q ps = raise (System.NotImplementedException())
 
     /// <summary>constructively puts a in to p immediately before q</summary
-    /// <param name="a"></param>
-    /// <param name="p"></param>
-    /// <param name="q"></param>
     /// <returns></returns>
-    let put a p q = raise (System.NotImplementedException())
+    let put (a: 't) (p: List<'t>) (q : 't) = raise (System.NotImplementedException())
