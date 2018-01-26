@@ -9,17 +9,17 @@ open Xunit
 
 [<Fact>]
 let ``permute1`` () = 
-    Assert.True(true)
+    Assert.True(false)
 
 [<Fact>]
 let ``mapinsert`` () = 
-    Assert.True(true)
+    Assert.True(false)
 
 [<Fact>]
 let ``insert`` () = 
-    Assert.True(true)
+    Assert.True(false)
 
 [<Fact>]
 let ``put`` () = 
-    Assert.True(true)
+    Assert.True(false)
 
