@@ -36,8 +36,10 @@ let ``put`` () =
     let p = [1; 2; 3]
     let q = 3
 
+    let expected = [1; 2; 0; 3;]
+
     // Act
-    let result = Permutations.put a p q
+    let actual = Permutations.put a p q
 
     // Assert
-    Assert.True(false)
+    Assert.Equal<int>(expected, actual);
