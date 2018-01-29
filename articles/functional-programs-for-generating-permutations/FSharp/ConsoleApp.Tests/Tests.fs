@@ -30,7 +30,7 @@ let ``insert`` () =
     Assert.True(false)
 
 [<Theory>]
-[<MemberData("values")>]
+[<MemberData("putTestValues")>]
 let ``put`` (a, p, q, expected) = 
     // Arrange // Act
     let actual = Permutations.put a p q
@@ -38,7 +38,9 @@ let ``put`` (a, p, q, expected) =
     // Assert
     Assert.Equal<int>(expected, actual);
 
-let values : obj array seq = 
+let putTestValues : obj array seq = 
     seq {
         yield [|0; [1;2;3]; 3; [1;2;0;3]|]
+        yield [|0; [1;2;3]; 2; [1;0;2;3]|]
+        yield [|0; [1;2;3]; 1; [0;1;2;3]|]
     }
