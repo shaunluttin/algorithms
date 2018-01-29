@@ -29,17 +29,16 @@ let ``insert`` () =
     // Assert
     Assert.True(false)
 
-[<Fact>]
-let ``put`` () = 
-    // Arrange
-    let a = 0
-    let p = [1; 2; 3]
-    let q = 3
-
-    let expected = [1; 2; 0; 3;]
-
-    // Act
+[<Theory>]
+[<MemberData("values")>]
+let ``put`` (a, p, q, expected) = 
+    // Arrange // Act
     let actual = Permutations.put a p q
 
     // Assert
     Assert.Equal<int>(expected, actual);
+
+let values : obj array seq = 
+    seq {
+        yield [|0; [1;2;3]; 3; [1;2;0;3]|]
+    }
