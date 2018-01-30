@@ -8,21 +8,21 @@ open System
 open Xunit
 open FSharp.ConsoleApp
 
-[<Fact>]
+[<Fact(Skip = "TODO")>]
 let ``permute1`` () = 
     // Arrange
     // Act
     // Assert
     Assert.True(false)
 
-[<Fact>]
+[<Fact(Skip = "TODO")>]
 let ``mapinsert`` () = 
     // Arrange
     // Act
     // Assert
     Assert.True(false)
 
-[<Fact>]
+[<Fact(Skip = "TODO")>]
 let ``insert`` () = 
     // Arrange
     // Act

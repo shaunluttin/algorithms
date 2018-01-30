@@ -23,5 +23,6 @@ module Permutations =
 
     /// <summary>constructively puts a in to p immediately before q</summary
     /// <returns></returns>
-    let put (a: 't) (p: List<'t>) (q : 't) : List<'t> = 
-        [1; 2; 0; 3]
+    let rec put (a: 't) (p: List<'t>) (q: 't) : List<'t> = 
+        if p.Head = q then a :: p
+        else p.Head :: put a p.Tail q
