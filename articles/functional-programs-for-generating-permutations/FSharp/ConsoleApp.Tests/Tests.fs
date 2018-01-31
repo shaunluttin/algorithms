@@ -34,7 +34,6 @@ let ``insert`` (a, p, q, expected) =
     // Assert
     Assert.Equal<int>(expected, actual);
 
-
 [<Theory>]
 [<MemberData("putTestValues")>]
 let ``put`` (a, p, q, expected) = 
@@ -46,6 +45,7 @@ let ``put`` (a, p, q, expected) =
 
 let insertTestValues : obj array seq = 
     seq {
+        yield [|0; [1;2;3]; []; [1;2;3;0]|]
         yield [|0; [1;2;3]; [3]; [1;2;0;3]|]
         yield [|0; [1;2;3]; [2;3]; [1;0;2;3]|]
         yield [|0; [1;2;3]; [1;2;3]; [0;1;2;3]|]
@@ -56,5 +56,4 @@ let putTestValues : obj array seq =
         yield [|0; [1;2;3]; [3]; [1;2;0;3]|]
         yield [|0; [1;2;3]; [2;3]; [1;0;2;3]|]
         yield [|0; [1;2;3]; [1;2;3]; [0;1;2;3]|]
-        yield [|0; [1;2;3]; null; [0;1;2;3]|]
     }

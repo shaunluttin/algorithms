@@ -1,1 +1,9 @@
-module Program = let [<EntryPoint>] main _ = 0
+open System
+
+[<EntryPoint>]
+let main argv =
+
+    let output = "TODO"
+    printfn "Output %O" output
+
+    0 // return an integer exit code
