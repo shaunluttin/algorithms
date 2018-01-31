@@ -22,7 +22,7 @@ let ``mapinsert`` () =
     // Assert
     Assert.True(false)
 
-[<Fact>]
+[<Theory(Skip = "TODO")>]
 [<MemberData("insertTestValues")>]
 let ``insert`` (a, p, q, expected) = 
     // Arrange 
@@ -56,4 +56,5 @@ let putTestValues : obj array seq =
         yield [|0; [1;2;3]; [3]; [1;2;0;3]|]
         yield [|0; [1;2;3]; [2;3]; [1;0;2;3]|]
         yield [|0; [1;2;3]; [1;2;3]; [0;1;2;3]|]
+        yield [|0; [1;2;3]; null; [0;1;2;3]|]
     }
