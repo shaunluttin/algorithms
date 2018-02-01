@@ -18,18 +18,17 @@ let ``permute1`` () =
 [<Fact(Skip = "TODO")>]
 let ``mapinsert`` () = 
     // Arrange
+
     // Act
+
     // Assert
     Assert.True(false)
 
 [<Theory>]
 [<MemberData("insertTestValues")>]
 let ``insert`` (a, p, q, expected) = 
-    // Arrange 
-    let ps = List.empty<int>
-    
-    // Act
-    let actual = Permutations.insert a p q ps
+    // Arrange // Act
+    let actual = Permutations.insert a p q List.empty<int>
 
     // Assert
     Assert.Equal<int>(expected, actual);
