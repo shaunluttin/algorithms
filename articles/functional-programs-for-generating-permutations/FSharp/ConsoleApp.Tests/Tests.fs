@@ -15,14 +15,14 @@ let ``permute1`` () =
     // Assert
     Assert.True(false)
 
-[<Fact(Skip = "TODO")>]
-let ``mapinsert`` () = 
-    // Arrange
-
-    // Act
+[<Theory>]
+[<MemberData("mapinsertTestValues")>]
+let ``mapinsert`` (a, ps, expected) = 
+    // Arrange // Act
+    let actual = Permutations.mapinsert a ps
 
     // Assert
-    Assert.True(false)
+    Assert.Equal<int>(expected, actual);
 
 [<Theory>]
 [<MemberData("insertTestValues")>]
@@ -42,8 +42,15 @@ let ``put`` (a, p, q, expected) =
     // Assert
     Assert.Equal<int>(expected, actual);
 
+let mapinsertTestValues : obj array seq = 
+    seq {
+        yield [|0; [3]; [0;3;  3;0]|]
+    }
+
 let insertTestValues : obj array seq = 
     seq {
+        yield [|0; [3]; [3]; [0;3;  3;0]|]
+
         yield [|0; [1;2;3]; List.empty<int>; [1;2;3;0]|]
         yield [|0; [1;2;3]; [3]; [1;2;0;3;  1;2;3;0]|]
         yield [|0; [1;2;3]; [2;3]; [1;0;2;3;  1;2;0;3;  1;2;3;0]|]
