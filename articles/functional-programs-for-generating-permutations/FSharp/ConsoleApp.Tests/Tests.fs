@@ -26,9 +26,9 @@ let ``mapinsert`` (a, ps, expected) =
 
 [<Theory>]
 [<MemberData("insertTestValues")>]
-let ``insert`` (a, p, q, expected) = 
+let ``insert`` (a, p, q, ps, expected) = 
     // Arrange // Act
-    let actual = Permutations.insert a p q List.empty<int>
+    let actual = Permutations.insert a p q ps 
 
     // Assert
     Assert.Equal<int>(expected, actual);
@@ -44,17 +44,19 @@ let ``put`` (a, p, q, expected) =
 
 let mapinsertTestValues : obj array seq = 
     seq {
+        yield [|0; [2;3]; [0;2;  2;0;  0;3;  3;0]|]
         yield [|0; [3]; [0;3;  3;0]|]
     }
 
 let insertTestValues : obj array seq = 
     seq {
-        yield [|0; [3]; [3]; [0;3;  3;0]|]
+        yield [|0; [2]; [2]; [0;3;  3;0]; [0;2;  2;0;  0;3;  3;0]|]
+        yield [|0; [3]; [3]; List.empty<int>; [0;3;  3;0]|]
 
-        yield [|0; [1;2;3]; List.empty<int>; [1;2;3;0]|]
-        yield [|0; [1;2;3]; [3]; [1;2;0;3;  1;2;3;0]|]
-        yield [|0; [1;2;3]; [2;3]; [1;0;2;3;  1;2;0;3;  1;2;3;0]|]
-        yield [|0; [1;2;3]; [1;2;3]; [0;1;2;3;  1;0;2;3;  1;2;0;3;  1;2;3;0]|]
+        yield [|0; [1;2;3]; List.empty<int>; List.empty<int>; [1;2;3;0]|]
+        yield [|0; [1;2;3]; [3]; List.empty<int>; [1;2;0;3;  1;2;3;0]|]
+        yield [|0; [1;2;3]; [2;3]; List.empty<int>; [1;0;2;3;  1;2;0;3;  1;2;3;0]|]
+        yield [|0; [1;2;3]; [1;2;3]; List.empty<int>; [0;1;2;3;  1;0;2;3;  1;2;0;3;  1;2;3;0]|]
     }
 
 let putTestValues : obj array seq = 
