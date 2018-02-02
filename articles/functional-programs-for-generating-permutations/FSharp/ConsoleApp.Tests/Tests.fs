@@ -44,7 +44,7 @@ let ``put`` (a, p, q, expected) =
 
 let mapinsertTestValues : obj array seq = 
     seq {
-        // yield [|0; [1;2;3]; [ (* TODO *) ]|]
+        yield [|0; [1;2;3]; [0;1;  1;0;  0;2;  2;0;  0;3;  3;0]|]
         yield [|0; [2;3]; [0;2;  2;0;  0;3;  3;0]|]
         yield [|0; [3]; [0;3;  3;0]|]
     }
