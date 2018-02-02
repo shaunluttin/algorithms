@@ -1,19 +1,20 @@
 // See 
 // docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-fsharp-with-dotnet-test
 
-
 module Tests
 
 open System
 open Xunit
 open FSharp.ConsoleApp
 
-[<Fact(Skip = "TODO")>]
-let ``permute1`` () = 
-    // Arrange
-    // Act
+[<Theory>]
+[<MemberData("permute1TestValues")>]
+let ``permute1`` (x, expected) = 
+    // Arrange // Act
+    let actual = Permutations.permute1 x
+
     // Assert
-    Assert.True(false)
+    Assert.Equal<int>(expected, actual);
 
 [<Theory>]
 [<MemberData("mapinsertTestValues")>]
@@ -41,6 +42,13 @@ let ``put`` (a, p, q, expected) =
 
     // Assert
     Assert.Equal<int>(expected, actual);
+
+let permute1TestValues : obj array seq = 
+    seq {
+        yield [|[0]; [0]|]
+        yield [|[0;1]; [0;1;  1;0]|]
+        yield [|[0;1;2]; [0; (*TODO*) ]|]
+    }
 
 let mapinsertTestValues : obj array seq = 
     seq {

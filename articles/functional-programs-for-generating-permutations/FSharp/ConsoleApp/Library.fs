@@ -2,10 +2,6 @@ namespace FSharp.ConsoleApp
 
 module Permutations =
 
-    /// <param name="x"></param>
-    /// <returns>returns a list of all permutations of the elements in the list x</returns>
-    let permute1 x = raise (System.NotImplementedException())
-
     /// constructively puts a in to p immediately before q
     let rec put (a: 't) (p: List<'t>) (q: List<'t>) : List<'t> = 
         if p = q then a :: q
@@ -24,3 +20,9 @@ module Permutations =
     let rec mapinsert (a: 't) (ps: List<'t>) : List<'t> = 
         if ps.Length = 0 then List.empty<'t>
         else insert a [ps.Head] [ps.Head] (mapinsert a ps.Tail)
+
+    /// <param name="x"></param>
+    /// <returns>returns a list of all permutations of the elements in the list x</returns>
+    let rec permute1 (x: List<'t>) : List<'t> = 
+        if x.Length = 0 then x
+        else mapinsert x.Head (permute1 x.Tail)
