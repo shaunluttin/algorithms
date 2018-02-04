@@ -8,6 +8,10 @@ module Permutations =
         if p = q then a :: q
         else p.Head :: (put a p.Tail q)
 
+    // a: an element
+    // p: a list of elements
+    // q: a sublist of p
+    // ps: a list of permutations
     let rec insert (a: 't) (p: List<'t>) (q: List<'t>) (ps: permutations<'t>) : permutations<'t> =
         if q.Length = 0 then (put a p q) :: ps
         else (put a p q) :: (insert a p q.Tail ps) 
