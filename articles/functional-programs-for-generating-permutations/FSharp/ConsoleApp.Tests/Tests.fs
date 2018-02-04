@@ -7,11 +7,14 @@ open System
 open Xunit
 open FSharp.ConsoleApp
 
-[<Theory(Skip = "TODO")>]
+[<Theory>]
 [<MemberData("permute1TestValues")>]
 let ``permute1`` (x, expected) = 
-    // Arrange // Act // Assert
-    Assert.True(false)
+    // Arrange // Act                             
+    let actual = Permutations.permute1 x
+                                                
+    // Assert                                     
+    Assert.Equal<List<int>>(expected, actual);          
 
 [<Theory>]
 [<MemberData("mapinsertTestValues")>]
@@ -39,8 +42,23 @@ let ``put`` (a, p, q, expected) =
                                             
     // Assert                               
     Assert.Equal<int>(expected, actual);    
-                                            
 
+let permute1TestValues : obj array seq =                                                            
+    seq {                                                                                         
+        yield [| [0;1]; [[1;0]; [0;1]] |]
+    }                                                                                             
+
+let mapinsertTestValues : obj array seq =                                                            
+    seq {                                                                                         
+        yield [| 0; List.empty<List<int>>; List.empty<List<int>> |]
+        yield [| 1; [[0]]; [[1;0]; [0;1]] |]
+    }                                                                                             
+                                                                                                  
+let insertTestValues : obj array seq =                                                            
+    seq {                                                                                         
+        yield [| 0; [1;2]; [2]; List.empty<List<int>>; [[1;0;2]; [1;2;0]] |]
+    }                                                                                             
+                                                                                                  
 let putTestValues : obj array seq =                           
     seq {                                                     
         yield [| 0; [1;2;3]; List.empty<int>; [1;2;3;0] |]      
@@ -48,15 +66,3 @@ let putTestValues : obj array seq =
         yield [| 0; [1;2;3]; [2;3]; [1;0;2;3] |]                
         yield [| 0; [1;2;3]; [1;2;3]; [0;1;2;3] |]              
     }                                                         
-
-let insertTestValues : obj array seq =                                                            
-    seq {                                                                                         
-        yield [| 0; [1;2]; [2]; List.empty<List<int>>; [[1;0;2]; [1;2;0]] |]
-    }                                                                                             
-                                                                                                  
-let mapinsertTestValues : obj array seq =                                                            
-    seq {                                                                                         
-        yield [| 0; List.empty<List<int>>; List.empty<List<int>> |]
-        yield [| 1; [[0]]; [[1;0]; [0;1]] |]
-    }                                                                                             
-                                                                                                  
