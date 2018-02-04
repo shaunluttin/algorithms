@@ -6,8 +6,9 @@ module Permutations =
         if p = q then a :: q
         else p.Head :: (put a p.Tail q)
 
-    let rec insert a p q ps : List<List<'t>> = 
-        (put a p q) :: (insert a p q.Tail ps) 
+    let rec insert (a: 't) (p: List<'t>) (q: List<'t>) (ps: List<List<'t>>) : List<List<'t>> = 
+        if q.Length = 0 then (put a p q) :: ps
+        else (put a p q) :: (insert a p q.Tail ps) 
 
     let rec mapinsert (a: 't) (ps: List<List<'t>>) : List<List<'t>> =
         insert a ps.Head ps.Head (mapinsert a ps.Tail)
