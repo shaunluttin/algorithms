@@ -7,7 +7,7 @@ open System
 open Xunit
 open FSharp.ConsoleApp
 
-[<Theory>]
+[<Theory(Skip = "TODO")>]
 [<MemberData("permute1TestValues")>]
 let ``permute1`` (x, expected) = 
     // Arrange // Act
@@ -47,7 +47,7 @@ let permute1TestValues : obj array seq =
     seq {
         yield [|[0]; [0]|]
         yield [|[0;1]; [0;1;  1;0]|]
-        yield [|[0;1;2]; [0; (*TODO*) ]|]
+        // yield [|[0;1;2]; [0; (*TODO*) ]|]
     }
 
 let mapinsertTestValues : obj array seq = 
@@ -55,6 +55,7 @@ let mapinsertTestValues : obj array seq =
         yield [|0; [1;2;3]; [0;1;  1;0;  0;2;  2;0;  0;3;  3;0]|]
         yield [|0; [2;3]; [0;2;  2;0;  0;3;  3;0]|]
         yield [|0; [3]; [0;3;  3;0]|]
+        yield [|0; List.empty<int>; List.empty<int>|]
     }
 
 let insertTestValues : obj array seq = 
