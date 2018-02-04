@@ -2,27 +2,18 @@ namespace FSharp.ConsoleApp
 
 module Permutations =
 
-    /// constructively puts a in to p immediately before q
-    let rec put (a: 't) (p: List<'t>) (q: List<'t>) : List<'t> = 
+    let rec put (a: 't) (p: List<'t>) (q: List<'t>) : List<'t> =
         if p = q then a :: q
-        else p.Head :: put a p.Tail q
+        else p.Head :: (put a p.Tail q)
 
-    /// puts a in to p immediately before q and each subsequent position of p
-    /// <param name="a">an item</param>
-    /// <param name="p">a list of items</param>
-    /// <param name="q">a sublist of p</param>
-    /// <param name="ps">an accumulator which avoids an explicit concatenation operation in mapinsert</param>
-    let rec insert (a: 't) (p: List<'t>) (q: List<'t>) (ps: List<'t>) : List<'t> = 
-        if q.Length = 0 then (put a p q) @ ps
-        else (put a p q) @ (insert a p q.Tail ps)
+    let rec insert a p q ps : List<List<'t>> = 
+        (put a p q) :: (insert a p q.Tail ps) 
 
-    /// appends the results of inserting a at each position of each permutation in ps
-    let rec mapinsert (a: 't) (ps: List<'t>) : List<'t> = 
-        if ps.Length = 0 then List.empty<'t>
-        else insert a [ps.Head] [ps.Head] (mapinsert a ps.Tail)
+    let rec mapinsert (a: 't) (ps: List<List<'t>>) : List<List<'t>> =
+        insert a ps.Head ps.Head (mapinsert a ps.Tail)
 
-    /// <param name="x"></param>
-    /// <returns>returns a list of all permutations of the elements in the list x</returns>
-    let rec permute1 (x: List<'t>) : List<'t> = 
-        if x.Length = 0 then x
-        else mapinsert x.Head (permute1 x.Tail)
+    // x: a list of elements
+    // returns a list of permutations (which are lists of elements)
+    let rec permute1 (x: List<'t>) : List<List<'t>> = 
+        if x.Length = 0 then [x]
+        else mapinsert x.Head (permute1 x)
