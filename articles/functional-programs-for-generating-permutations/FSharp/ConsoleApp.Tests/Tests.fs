@@ -45,7 +45,7 @@ let ``put`` (a, p, q, expected) =
 
 let permute1TestValues : obj array seq =                                                            
     seq {                                                                                         
-        yield [| [0;1]; [[1;0]; [0;1]] |]
+        yield [| [0;1]; [[0;1]; [1;0]] |]
     }                                                                                             
 
 let mapinsertTestValues : obj array seq =                                                            

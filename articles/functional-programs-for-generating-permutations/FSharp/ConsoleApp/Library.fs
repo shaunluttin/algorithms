@@ -24,4 +24,4 @@ module Permutations =
     // returns a list of permutations (which are lists of elements)
     let rec permute1 (x: List<'t>) : permutations<'t> = 
         if x.Length = 0 then [x]
-        else mapinsert x.Head (permute1 x)
+        else mapinsert x.Head (permute1 x.Tail)
