@@ -1,9 +1,8 @@
 // See 
 // docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-fsharp-with-dotnet-test
 
-module Tests
+module Permute1Tests
 
-open System
 open Xunit
 open FSharp.ConsoleApp
 
