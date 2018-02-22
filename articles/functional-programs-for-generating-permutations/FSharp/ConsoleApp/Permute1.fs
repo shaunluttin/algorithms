@@ -1,6 +1,6 @@
 namespace FSharp.ConsoleApp
 
-module Permutations =
+module Permute1 =
 
     let rec put (a: 't) (p: List<'t>) (q: List<'t>) : List<'t> =
         if p = q then a :: q

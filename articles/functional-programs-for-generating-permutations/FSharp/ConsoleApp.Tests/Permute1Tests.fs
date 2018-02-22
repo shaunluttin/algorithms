@@ -10,7 +10,7 @@ open FSharp.ConsoleApp
 [<MemberData("permute1TestValues")>]
 let ``permute1`` (x, expected) = 
     // Arrange // Act                             
-    let actual = Permutations.permute1 x
+    let actual = Permute1.permute1 x
                                                 
     // Assert                                     
     Assert.Equal<List<int>>(expected, actual);          
@@ -19,7 +19,7 @@ let ``permute1`` (x, expected) =
 [<MemberData("mapinsertTestValues")>]
 let ``mapinsert`` (a, ps, expected) = 
     // Arrange // Act                             
-    let actual = Permutations.mapinsert a ps      
+    let actual = Permute1.mapinsert a ps      
                                                 
     // Assert                                     
     Assert.Equal<List<int>>(expected, actual);          
@@ -28,7 +28,7 @@ let ``mapinsert`` (a, ps, expected) =
 [<MemberData("insertTestValues")>]
 let ``insert`` (a, p, q, ps, expected) = 
     // Arrange // Act                                      
-    let actual = Permutations.insert a p q ps              
+    let actual = Permute1.insert a p q ps              
                                                         
     // Assert                                              
     Assert.Equal<List<int>>(expected, actual);                   
@@ -37,7 +37,7 @@ let ``insert`` (a, p, q, ps, expected) =
 [<MemberData("putTestValues")>]
 let ``put`` (a, p, q, expected) = 
     // Arrange // Act                       
-    let actual = Permutations.put a p q     
+    let actual = Permute1.put a p q     
                                             
     // Assert                               
     Assert.Equal<int>(expected, actual);    
