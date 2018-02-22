@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Include="Permute1Tests.fs" />
+    <Compile Include="Permute2Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
