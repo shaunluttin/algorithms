@@ -2,12 +2,18 @@ namespace FSharp.ConsoleApp
 
 module rec Permute2 =
 
-    let removeFirst (x: List<'t>) (y: 't) =
+    // TODO Define unit test.
+    // TODO implement function.
+    let removeFirst (x: List<'t>) (y: 't): List<'t> =
         raise (System.NotImplementedException(""))
 
+    // TODO Define unit test.
+    // TODO implement function.
     let rec mapcons (a: 't) (ps: List<List<'t>>) (qs: List<List<'t>>): List<List<'t>> =
         raise (System.NotImplementedException(""))
 
+    // TODO Define unit test.
+    // TODO implement function.
     let rec mapperm (x: List<'t>) (y: List<'t>): List<List<'t>> = 
         raise (System.NotImplementedException(""))
         let mp = mapperm x y.Tail
@@ -15,8 +21,8 @@ module rec Permute2 =
         let pm = permute2 rm
         mapcons y.Head pm mp
 
-    // x: a list of elements
-    // returns a list of permutations
+    // TODO Define unit test.
+    // TODO implement function.
     let rec permute2 (x: List<'t>) : List<List<'t>> = 
         raise (System.NotImplementedException(""))
         mapperm x x

@@ -3,17 +3,42 @@ module Permute2Tests
 open Xunit
 open FSharp.ConsoleApp
 
-[<Theory>]
-[<MemberData("permute2TestValues")>]
-let ``permute2`` (x, expected) = 
-    let actual = Permute2.permute2 x
-                                                
-    // Assert                                     
-    Assert.Equal<List<int>>(expected, actual);          
+[<Fact>]
+let ``removeFirst`` =
+    // Arrange // Act
+    let actual = Permute2.removeFirst 
+                    List<int>.Empty 
+                    0
 
-// TODO Share this between the Permute1Tests and the Permute2Tests.
-let permute2TestValues : obj array seq =                                                            
-    seq {                                                                                         
-        yield [| [0;1]; [[0;1]; [1;0]] |]
-        yield [| [0;1;2]; [[0;1;2]; [1;0;2]; [1;2;0]; [0;2;1]; [2;0;1]; [2;1;0]] |]
-    }                                                                                             
+    // Assert
+    Assert.True(false)
+
+[<Fact>]
+let ``mapcons`` =
+    // Arrange // Act
+    let actual = Permute2.mapcons 
+                    0 
+                    List<List<int>>.Empty 
+                    List<List<int>>.Empty
+
+    // Assert
+    Assert.True(false)
+
+[<Fact>]
+let ``mapperm`` =
+    // Arrange // Act
+    let actual = Permute2.mapperm 
+                    List<int>.Empty 
+                    List<int>.Empty
+
+    // Assert
+    Assert.True(false)
+
+[<Fact>]
+let ``permute2`` =
+    // Arrange // Act
+    let actual = Permute2.permute2 
+                    List<int>.Empty
+
+    // Assert
+    Assert.True(false)
