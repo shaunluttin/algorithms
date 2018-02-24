@@ -3,17 +3,18 @@ module Permute2Tests
 open Xunit
 open FSharp.ConsoleApp
 
-[<Fact>]
-let ``removeFirst`` =
+[<Theory>]
+[<MemberData("removeFirstTestData")>]
+let ``removeFirst`` (item, list, expected: List<int>) =
     // Arrange // Act
-    let actual = Permute2.removeFirst 
-                    List<int>.Empty 
-                    0
+    let actual = Permute2.removeFirst
+                    list
+                    item
 
     // Assert
-    Assert.True(false)
+    Assert.Equal<List<int>>(expected, actual)
 
-[<Fact>]
+[<Fact(Skip = "")>]
 let ``mapcons`` =
     // Arrange // Act
     let actual = Permute2.mapcons 
@@ -24,7 +25,7 @@ let ``mapcons`` =
     // Assert
     Assert.True(false)
 
-[<Fact>]
+[<Fact(Skip = "")>]
 let ``mapperm`` =
     // Arrange // Act
     let actual = Permute2.mapperm 
@@ -34,7 +35,7 @@ let ``mapperm`` =
     // Assert
     Assert.True(false)
 
-[<Fact>]
+[<Fact(Skip = "")>]
 let ``permute2`` =
     // Arrange // Act
     let actual = Permute2.permute2 
@@ -42,3 +43,16 @@ let ``permute2`` =
 
     // Assert
     Assert.True(false)
+
+let removeFirstTestData : obj array seq = 
+    seq {
+        // not in list
+        yield [| 0; [1;2;3;4]; [1;2;3;4] |]
+        // in list once
+        yield [| 0; [0;1;2;3]; [1;2;3] |]
+        yield [| 0; [1;0;2;3]; [1;2;3] |]
+        yield [| 0; [1;2;0;3]; [1;2;3] |]
+        yield [| 0; [1;2;3;0]; [1;2;3] |]
+        // in list multiple times
+        yield [| 0; [0;0;0;3]; [0;0;3] |]
+    }

@@ -4,8 +4,11 @@ module rec Permute2 =
 
     // TODO Define unit test.
     // TODO implement function.
-    let removeFirst (x: List<'t>) (y: 't): List<'t> =
-        raise (System.NotImplementedException(""))
+    let removeFirst (lst: List<'t>) (n: 't): List<'t> =
+        match lst with
+        | h::tl when h = n -> tl
+        | h::tl -> h :: (removeFirst tl n)
+        | [] -> []
 
     // TODO Define unit test.
     // TODO implement function.
