@@ -2,12 +2,14 @@ namespace FSharp.ConsoleApp
 
 module rec Permute2 =
 
-    // TODO Define unit test.
-    // TODO implement function.
-    let removeFirst (lst: List<'t>) (n: 't): List<'t> =
-        match lst with
-        | h::tl when h = n -> tl
-        | h::tl -> h :: (removeFirst tl n)
+    let removeFirst (list: List<'t>) (removeMe: 't): List<'t> =
+        // match against the head and the tail
+        match list with
+        // when the head equal the element to remove, return the tail only
+        | head::tail when head = removeMe -> tail
+        // otherwise, prepend the head to the result of the recursive call
+        | head::tail -> head :: (removeFirst tail removeMe)
+        // when the list is empty, return it
         | [] -> []
 
     // TODO Define unit test.

@@ -7,15 +7,13 @@ open FSharp.ConsoleApp
 [<MemberData("removeFirstTestData")>]
 let ``removeFirst`` (item, list, expected: List<int>) =
     // Arrange // Act
-    let actual = Permute2.removeFirst
-                    list
-                    item
+    let actual = Permute2.removeFirst list item
 
     // Assert
     Assert.Equal<List<int>>(expected, actual)
 
-[<Fact(Skip = "")>]
-let ``mapcons`` =
+[<Fact(Skip = "Not implemented yet")>]
+let ``mapcons`` () =
     // Arrange // Act
     let actual = Permute2.mapcons 
                     0 
@@ -25,8 +23,8 @@ let ``mapcons`` =
     // Assert
     Assert.True(false)
 
-[<Fact(Skip = "")>]
-let ``mapperm`` =
+[<Fact(Skip = "Not implemented yet")>]
+let ``mapperm`` () =
     // Arrange // Act
     let actual = Permute2.mapperm 
                     List<int>.Empty 
@@ -35,8 +33,8 @@ let ``mapperm`` =
     // Assert
     Assert.True(false)
 
-[<Fact(Skip = "")>]
-let ``permute2`` =
+[<Fact(Skip = "Not implemented yet")>]
+let ``permute2`` () =
     // Arrange // Act
     let actual = Permute2.permute2 
                     List<int>.Empty
