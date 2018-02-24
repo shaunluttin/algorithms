@@ -5,11 +5,11 @@ module rec Permute2 =
     let removeFirst (list: List<'t>) (removeMe: 't): List<'t> =
         // match against the head and the tail
         match list with
-        // when the head equal the element to remove, return the tail only
+        // base case: when the head equals the element to remove, return the tail
         | head::tail when head = removeMe -> tail
-        // otherwise, prepend the head to the result of the recursive call
+        // recursive step: prepend the head to the result of the recursive call
         | head::tail -> head :: (removeFirst tail removeMe)
-        // when the list is empty, return it
+        // base case: when the list is empty, return it
         | [] -> []
 
     // TODO Define unit test.
