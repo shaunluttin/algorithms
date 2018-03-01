@@ -56,4 +56,8 @@ let removeFirstTestData : obj array seq =
 let mapconsTestData : obj array seq = 
     seq {
         yield [| 0; List.empty<List<int>>; List.empty<List<int>>; List.empty<List<int>> |]
+        yield [| 0; [ List.empty<int> ]; List.empty<List<int>>; [ [0] ] |]
+        yield [| 0; [ [1] ]; List.empty<List<int>>; [ [0;1] ] |]
+        yield [| 0; [ [1]; [2] ]; List.empty<List<int>>; [ [0;1]; [0;2] ] |]
+        yield [| 0; [ [1;2]; [2;3] ]; List.empty<List<int>>; [ [0;1;2]; [0;2;3] ] |]
     }
