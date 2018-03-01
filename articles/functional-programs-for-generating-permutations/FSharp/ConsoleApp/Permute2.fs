@@ -15,8 +15,9 @@ module rec Permute2 =
     // appends a to each element of ps in turn,
     // using the accumulator qs to avoid an explicit concatenation operation
     let rec mapcons (a: 't) (ps: List<List<'t>>) (qs: List<List<'t>>): List<List<'t>> =
-        if ps.IsEmpty then qs
-        else (a :: ps.Head) :: mapcons a ps.Tail qs
+        match ps with
+        | head::tail -> (a :: head) :: mapcons a tail qs
+        | [] -> qs
 
     // TODO Define unit test.
     // TODO implement function.
