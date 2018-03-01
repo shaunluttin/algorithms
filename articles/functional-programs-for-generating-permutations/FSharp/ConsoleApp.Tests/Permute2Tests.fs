@@ -12,16 +12,14 @@ let ``removeFirst`` (item, list, expected: List<int>) =
     // Assert
     Assert.Equal<List<int>>(expected, actual)
 
-[<Fact(Skip = "Not implemented yet")>]
-let ``mapcons`` () =
+[<Theory>]
+[<MemberData("mapconsTestData")>]
+let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = Permute2.mapcons 
-                    0 
-                    List<List<int>>.Empty 
-                    List<List<int>>.Empty
+    let actual = Permute2.mapcons item ps qs
 
     // Assert
-    Assert.True(false)
+    Assert.Equal<List<List<int>>>(expected, actual)
 
 [<Fact(Skip = "Not implemented yet")>]
 let ``mapperm`` () =
@@ -53,4 +51,9 @@ let removeFirstTestData : obj array seq =
         yield [| 0; [1;2;3;0]; [1;2;3] |]
         // in list multiple times
         yield [| 0; [0;0;0;3]; [0;0;3] |]
+    }
+
+let mapconsTestData : obj array seq = 
+    seq {
+        yield [| 0; List.empty<List<int>>; List.empty<List<int>>; List.empty<List<int>> |]
     }

@@ -15,4 +15,6 @@ let main argv =
     let result = Permute2.removeFirst list 3
     printfn "%A" result
 
+    printfn "%A" (0 :: list)
+
     0 // return an integer exit code

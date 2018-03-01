@@ -12,10 +12,11 @@ module rec Permute2 =
         // base case: when the list is empty, return it
         | [] -> []
 
-    // TODO Define unit test.
-    // TODO implement function.
+    // appends a to each element of ps in turn,
+    // using the accumulator qs to avoid an explicit concatenation operation
     let rec mapcons (a: 't) (ps: List<List<'t>>) (qs: List<List<'t>>): List<List<'t>> =
-        raise (System.NotImplementedException(""))
+        if ps.IsEmpty then qs
+        else (a :: ps.Head) :: mapcons a ps.Tail qs
 
     // TODO Define unit test.
     // TODO implement function.
