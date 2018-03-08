@@ -1,6 +1,4 @@
-namespace FSharp.ConsoleApp
-
-module rec Permute2 =
+module rec Permutations.Permute2
 
     let removeFirst (list: List<'t>) (removeMe: 't): List<'t> =
         // match against the head and the tail

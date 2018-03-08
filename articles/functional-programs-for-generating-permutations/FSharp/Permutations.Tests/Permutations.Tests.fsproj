@@ -9,7 +9,6 @@
   <ItemGroup>
     <Compile Include="Permute1Tests.fs" />
     <Compile Include="Permute2Tests.fs" />
-    <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp\ConsoleApp.fsproj" />
+    <ProjectReference Include="..\Permutations\Permutations.fsproj" />
   </ItemGroup>
 
 </Project>

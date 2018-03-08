@@ -4,7 +4,7 @@
 module Permute1Tests
 
 open Xunit
-open FSharp.ConsoleApp
+open Permutations
 
 [<Theory>]
 [<MemberData("permute1TestValues")>]

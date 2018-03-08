@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="Permute1.fs" />
+    <Compile Include="Permute2.fs" />
   </ItemGroup>
 
 </Project>

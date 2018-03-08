@@ -1,4 +1,4 @@
-open FSharp.ConsoleApp
+open Permutations
 
 [<EntryPoint>]
 let main argv =

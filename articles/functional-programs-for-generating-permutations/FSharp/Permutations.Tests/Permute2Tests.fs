@@ -1,7 +1,7 @@
 module Permute2Tests
 
 open Xunit
-open FSharp.ConsoleApp
+open Permutations
 
 [<Theory>]
 [<MemberData("removeFirstTestData")>]
