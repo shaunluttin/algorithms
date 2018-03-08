@@ -23,11 +23,11 @@ module rec Permutations.Permute2
         raise (System.NotImplementedException(""))
         let mp = mapperm x y.Tail
         let rm = removeFirst x y.Head
-        let pm = permute2 rm
+        let pm = permute rm
         mapcons y.Head pm mp
 
     // TODO Define unit test.
     // TODO implement function.
-    let rec permute2 (x: List<'t>) : List<List<'t>> = 
+    let rec permute (x: List<'t>) : List<List<'t>> = 
         raise (System.NotImplementedException(""))
         mapperm x x

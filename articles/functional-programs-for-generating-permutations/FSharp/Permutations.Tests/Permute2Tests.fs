@@ -1,13 +1,13 @@
 module Permute2Tests
 
 open Xunit
-open Permutations
+open Permutations.Permute2
 
 [<Theory>]
 [<MemberData("removeFirstTestData")>]
 let ``removeFirst`` (item, list, expected: List<int>) =
     // Arrange // Act
-    let actual = Permute2.removeFirst list item
+    let actual = removeFirst list item
 
     // Assert
     Assert.Equal<List<int>>(expected, actual)
@@ -16,7 +16,7 @@ let ``removeFirst`` (item, list, expected: List<int>) =
 [<MemberData("mapconsTestData")>]
 let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = Permute2.mapcons item ps qs
+    let actual = mapcons item ps qs
 
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
@@ -24,7 +24,7 @@ let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
 [<Fact(Skip = "Not implemented yet")>]
 let ``mapperm`` () =
     // Arrange // Act
-    let actual = Permute2.mapperm 
+    let actual = mapperm 
                     List<int>.Empty 
                     List<int>.Empty
 
@@ -32,10 +32,9 @@ let ``mapperm`` () =
     Assert.True(false)
 
 [<Fact(Skip = "Not implemented yet")>]
-let ``permute2`` () =
+let ``permute`` () =
     // Arrange // Act
-    let actual = Permute2.permute2 
-                    List<int>.Empty
+    let actual = permute List<int>.Empty
 
     // Assert
     Assert.True(false)

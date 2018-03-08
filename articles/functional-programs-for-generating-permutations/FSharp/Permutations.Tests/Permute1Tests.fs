@@ -4,13 +4,13 @@
 module Permute1Tests
 
 open Xunit
-open Permutations
+open Permutations.Permute1
 
 [<Theory>]
-[<MemberData("permute1TestValues")>]
-let ``permute1`` (x, expected) = 
+[<MemberData("permuteTestValues")>]
+let ``permute`` (x, expected) = 
     // Arrange // Act                             
-    let actual = Permute1.permute1 x
+    let actual = permute x
                                                 
     // Assert                                     
     Assert.Equal<List<int>>(expected, actual);          
@@ -19,7 +19,7 @@ let ``permute1`` (x, expected) =
 [<MemberData("mapinsertTestValues")>]
 let ``mapinsert`` (a, ps, expected) = 
     // Arrange // Act                             
-    let actual = Permute1.mapinsert a ps      
+    let actual = mapinsert a ps      
                                                 
     // Assert                                     
     Assert.Equal<List<int>>(expected, actual);          
@@ -28,7 +28,7 @@ let ``mapinsert`` (a, ps, expected) =
 [<MemberData("insertTestValues")>]
 let ``insert`` (a, p, q, ps, expected) = 
     // Arrange // Act                                      
-    let actual = Permute1.insert a p q ps              
+    let actual = insert a p q ps              
                                                         
     // Assert                                              
     Assert.Equal<List<int>>(expected, actual);                   
@@ -37,12 +37,12 @@ let ``insert`` (a, p, q, ps, expected) =
 [<MemberData("putTestValues")>]
 let ``put`` (a, p, q, expected) = 
     // Arrange // Act                       
-    let actual = Permute1.put a p q     
+    let actual = put a p q     
                                             
     // Assert                               
     Assert.Equal<int>(expected, actual);    
 
-let permute1TestValues : obj array seq =                                                            
+let permuteTestValues : obj array seq =                                                            
     seq {                                                                                         
         yield [| [0;1]; [[0;1]; [1;0]] |]
         yield [| [0;1;2]; [[0;1;2]; [1;0;2]; [1;2;0]; [0;2;1]; [2;0;1]; [2;1;0]] |]

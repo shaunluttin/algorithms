@@ -18,6 +18,6 @@ module Permutations.Permute1
 
     // x: a list of elements
     // returns a list of permutations
-    let rec permute1 (x: List<'t>) : List<List<'t>> = 
+    let rec permute (x: List<'t>) : List<List<'t>> = 
         if x.IsEmpty then [x]
-        else mapinsert x.Head (permute1 x.Tail)
+        else mapinsert x.Head (permute x.Tail)
