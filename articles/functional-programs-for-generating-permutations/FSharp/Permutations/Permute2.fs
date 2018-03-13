@@ -24,7 +24,7 @@ module rec Permutations.Permute2
         match y with 
         // base case: y has no elements
         // this happens on the recursive call to mapperm with the tail of y
-        | [] -> [ [] ]
+        | [] -> []
         | head::tail -> 
             // remove the first item from x
             // recursively call permute with the result

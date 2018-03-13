@@ -62,5 +62,6 @@ let mapconsTestData : obj array seq =
 
 let mappermTestData : obj array seq = 
     seq {
-        yield [| List.empty<int>; List.empty<int>; [ List.empty<int> ] |]
+        yield [| List.empty<int>; List.empty<int>; List.empty<List<int>> |]
+        yield [| [ 0 ]; [ 0 ]; [ [ 0 ] ] |]
     }
