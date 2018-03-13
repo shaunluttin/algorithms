@@ -29,19 +29,17 @@ module rec Permutations.Permute2
             // remove the first item from x
             // recursively call permute with the result
             // until we have iterated thru all the x elements
-            let permuteNext = permute (removeFirst x head) // 3, 5
+            let permuteNext = permute (removeFirst x head)
             // recursively call mapperm with x and the tail of y
             // until we have iterated thru all the y elements
-            let mappermNext = mapperm x tail // 4, 6
+            let mappermNext = mapperm x tail
             // append the next element of y (head), 
             // to the permutation of the remaining elements of x,
             // passing an accumulator
-            mapcons head permuteNext mappermNext // 7, 8
+            mapcons head permuteNext mappermNext
 
-    // TODO Define unit test.
-    // TODO implement function.
     let rec permute (x: List<'t>) : List<List<'t>> = 
         match x with 
-        // base case: we've iterated thru all the items in x via mapPerm
+        // base case: we've iterated thru all the items in x via mapperm
         | [] -> [ [] ]
-        | _ -> mapperm x x // 2
+        | _ -> mapperm x x
