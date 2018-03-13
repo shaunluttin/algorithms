@@ -73,4 +73,5 @@ let permuteTestData : obj array seq =
     seq {
         yield [| List.empty<int>; [ List.empty<int> ] |]
         yield [| [0]; [ [0] ] |]
+        yield [| [0;1]; [ [0;1]; [1;0] ] |]
     }
