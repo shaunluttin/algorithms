@@ -12,7 +12,6 @@ let ``removeFirst`` (item, list, expected: List<int>) =
     // Assert
     Assert.Equal<List<int>>(expected, actual)
 
-[<Theory(Skip = "Test data returned null")>]
 [<MemberData("mapconsTestData")>]
 let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
