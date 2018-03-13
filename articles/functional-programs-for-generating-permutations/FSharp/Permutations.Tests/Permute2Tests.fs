@@ -21,15 +21,14 @@ let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
 
-[<Fact(Skip = "Not implemented yet")>]
-let ``mapperm`` () =
+[<Theory>]
+[<MemberData("mappermTestData")>]
+let ``mapperm`` (x, y, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = mapperm 
-                    List<int>.Empty 
-                    List<int>.Empty
+    let actual = mapperm x y
 
     // Assert
-    Assert.True(false)
+    Assert.Equal<List<List<int>>>(expected, actual)
 
 [<Fact(Skip = "Not implemented yet")>]
 let ``permute`` () =
@@ -59,4 +58,9 @@ let mapconsTestData : obj array seq =
         yield [| 0; [ [1] ]; List.empty<List<int>>; [ [0;1] ] |]
         yield [| 0; [ [1]; [2] ]; List.empty<List<int>>; [ [0;1]; [0;2] ] |]
         yield [| 0; [ [1;2]; [2;3] ]; List.empty<List<int>>; [ [0;1;2]; [0;2;3] ] |]
+    }
+
+let mappermTestData : obj array seq = 
+    seq {
+        yield [| List.empty<int>; List.empty<int>; [ List.empty<int> ] |]
     }
