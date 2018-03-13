@@ -72,4 +72,5 @@ let mappermTestData : obj array seq =
 let permuteTestData : obj array seq = 
     seq {
         yield [| List.empty<int>; [ List.empty<int> ] |]
+        yield [| [0]; [ [0] ] |]
     }
