@@ -1,6 +1,3 @@
-// See 
-// docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-fsharp-with-dotnet-test
-
 module Permute1Tests
 
 open Xunit

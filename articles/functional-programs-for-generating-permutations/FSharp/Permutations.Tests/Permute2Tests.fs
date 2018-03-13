@@ -3,10 +3,6 @@ module Permute2Tests
 open Xunit
 open Permutations.Permute2
 
-// System.InvalidOperationException : Test data returned null for 
-// Permute2Tests.removeFirst. Make sure it is statically initialized 
-// before this test method is called. [SO Question: How do we statically
-// initialize test data before calling a test method?]
 [<Theory>]
 [<MemberData("removeFirstTestData")>]
 let ``removeFirst`` (item, list, expected: List<int>) =
