@@ -15,4 +15,4 @@ let genperm (x: 't list) (p: 't list) (ps: 't list list) =
 let permute (x: 't list): 't list list =
     match x with 
     | [] -> [ [] ]
-    | _ -> genperm x [] [[]]
+    | _ -> genperm x [] []
