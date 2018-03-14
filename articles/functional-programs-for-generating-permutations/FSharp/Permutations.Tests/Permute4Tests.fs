@@ -3,7 +3,7 @@ module Permute4Tests
 open Xunit
 open Permutations.Permute4
 
-[<Theory>]
+[<Theory(Skip = "Not implemented")>]
 [<MemberData("mapPermTestData")>]
 let ``mapPerm`` (x, i, j, ps, expected: List<List<int>>) =
     // Arrange // Act
@@ -12,7 +12,7 @@ let ``mapPerm`` (x, i, j, ps, expected: List<List<int>>) =
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
 
-[<Theory>]
+[<Theory(Skip = "Not implemented")>]
 [<MemberData("genPermTestData")>]
 let ``genPerm`` (x, j, ps, expected: List<List<int>>) =
     // Arrange // Act
@@ -21,7 +21,7 @@ let ``genPerm`` (x, j, ps, expected: List<List<int>>) =
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
 
-[<Theory>]
+[<Theory(Skip = "Not implemented")>]
 [<MemberData("permuteTestData")>]
 let ``permute`` (x, expected: List<List<int>>) =
     // Arrange // Act
