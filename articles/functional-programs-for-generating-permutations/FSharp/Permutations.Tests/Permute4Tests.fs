@@ -3,29 +3,24 @@ module Permute4Tests
 open Xunit
 open Permutations.Permute4
 
-[<Theory(Skip = "Not implemented")>]
-[<MemberData("mapPermTestData")>]
-let ``mapPerm`` (x, i, j, ps, expected: List<List<int>>) =
-    // Arrange // Act
-    let actual = mapPerm x i j ps
-
-    // Assert
-    Assert.Equal<List<List<int>>>(expected, actual)
-
-[<Theory(Skip = "Not implemented")>]
-[<MemberData("genPermTestData")>]
-let ``genPerm`` (x, j, ps, expected: List<List<int>>) =
-    // Arrange // Act
-    let actual = genPerm x j ps
-
-    // Assert
-    Assert.Equal<List<List<int>>>(expected, actual)
-
-[<Theory(Skip = "Not implemented")>]
+[<Theory>]
 [<MemberData("permuteTestData")>]
-let ``permute`` (x, expected: List<List<int>>) =
+let ``permute`` (xs, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = permute x
+    let actual = permute xs
 
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
+
+// TODO Share this test data among the other tests.
+// We have two types of expectations: lexographic and reversed-lexographic.
+let permuteTestData : obj array seq = 
+    seq {
+        yield [| List.empty<int>; [ List.empty<int> ] |]
+        // yield [| [0]; [ [0] ] |]
+        // yield [| [0;1]; [ [0;1]; [1;0] ] |]
+        // yield [| 
+        //     ["A";"B";"C"];
+        //     [["A";"B";"C"];["B";"A";"C"];["A";"C";"B"];["C";"A";"B"];["B";"C";"A"];["C";"B";"A"]] 
+        // |]
+    }
