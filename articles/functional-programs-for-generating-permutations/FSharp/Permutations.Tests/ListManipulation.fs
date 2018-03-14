@@ -40,7 +40,9 @@ let putTestData: obj array seq =
 
 // deletes the current i'th element of xs
 // and inserts it after the current j'th element of xs.
-// [we are assuming that i and j start at one not zero.]
+// [we assume that i and j start at one not zero.]
+// [We assume that i must be less than j is.]
+// [We assume that j must not exceed xs.Length.]
 let moveTestData : obj array seq = 
     seq {
         yield [| 1; 2; ["A";"B";"C"]; ["B";"A";"C"] |]
