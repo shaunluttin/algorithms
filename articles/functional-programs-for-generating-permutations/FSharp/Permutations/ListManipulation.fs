@@ -14,4 +14,4 @@ let rec put x j xs =
 let rec move i j (xs: 't list) : 't list = 
     match i with 
     | 1 -> put xs.Head (j-1) xs.Tail
-    | _ -> []
+    | _ -> xs.Head :: move (i-1) (j-1) xs.Tail

@@ -45,6 +45,7 @@ let moveTestData : obj array seq =
     seq {
         yield [| 1; 2; ["A";"B";"C"]; ["B";"A";"C"] |]
         yield [| 1; 3; ["A";"B";"C"]; ["B";"C";"A";] |]
+        yield [| 2; 3; ["A";"B";"C"]; ["A";"C";"B";] |]
     }
 
 let removeFirstTestData : obj array seq = 
