@@ -9,8 +9,7 @@ let rec removeFirst x xs =
 let rec move xs i j : 't list = 
     []
 
-// TODO put xs as the last parameter to help with currying.
-let rec put a xs j =
+let rec put a j xs =
     match j with 
     | 0 -> a::xs
-    | _ -> []
+    | _ -> xs.Head :: (put a (j-1) xs.Tail)

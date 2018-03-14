@@ -5,9 +5,9 @@ open Permutations.ListManipulation
 
 [<Theory>]
 [<MemberData("putTestData")>]
-let ``put`` (a, xs, j, expected: 't list) =
+let ``put`` (a, j, xs, expected: 't list) =
     // Arrange // Act
-    let actual = put a xs j
+    let actual = put a j xs 
 
     // Assert
     Assert.Equal<'t list>(expected, actual)
@@ -32,7 +32,8 @@ let ``removeFirst`` (x, xs, expected: List<int>) =
 
 let putTestData: obj array seq = 
     seq {
-        yield [| "D"; ["A"; "B"; "C"]; 0; ["D"; "A"; "B"; "C"] |]
+        yield [| "D"; 0; ["A"; "B"; "C"]; ["D"; "A"; "B"; "C"] |]
+        yield [| "D"; 1; ["A"; "B"; "C"]; ["A"; "D"; "B"; "C"] |]
     }
 
 // deletes the i'th element of xs
