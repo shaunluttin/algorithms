@@ -16,7 +16,7 @@ let mapperm x y =
     match y with 
     | [] -> []
     | head::tail -> 
-        let permuteNext = permute (removeFirst x head)
+        let permuteNext = permute (removeFirst head x)
         let mappermNext = mapperm x tail
         mapcons head permuteNext mappermNext
 

@@ -6,7 +6,7 @@ let mapperm x y p ps =
     match y with
     | [] -> ps
     | head::tail ->
-        let genpermNext = genperm (removeFirst x head) (head::p) ps
+        let genpermNext = genperm (removeFirst head x) (head::p) ps
         mapperm x tail p genpermNext
 
 let genperm x p ps =

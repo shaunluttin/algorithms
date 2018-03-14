@@ -1,7 +1,7 @@
 module Permutations.ListManipulation
 
-let rec removeFirst list item =
+let rec removeFirst item list =
     match list with
     | [] -> []
     | head::tail when head = item -> tail
-    | head::tail -> head :: (removeFirst tail item)
+    | head::tail -> head :: (removeFirst item tail)

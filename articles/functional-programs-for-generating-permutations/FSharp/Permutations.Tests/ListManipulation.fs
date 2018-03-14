@@ -7,7 +7,7 @@ open Permutations.ListManipulation
 [<MemberData("removeFirstTestData")>]
 let ``removeFirst`` (item, list, expected: List<int>) =
     // Arrange // Act
-    let actual = removeFirst list item
+    let actual = removeFirst item list
 
     // Assert
     Assert.Equal<List<int>>(expected, actual)
