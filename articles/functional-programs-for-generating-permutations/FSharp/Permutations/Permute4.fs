@@ -4,7 +4,7 @@ open ListManipulation
 
 let mapPerm xs i j ps : 't list list = 
     match i with 
-    | j -> genPerm xs (j-1) ps
+    | eq when i = j -> genPerm xs (eq-1) ps
     | _ -> 
         let moved = move i j xs
         let genPermNext = genPerm moved (j-1) ps
