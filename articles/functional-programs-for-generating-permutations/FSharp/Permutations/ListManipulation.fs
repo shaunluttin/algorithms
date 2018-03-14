@@ -6,10 +6,12 @@ let rec removeFirst x xs =
     | head::tail when head = x -> tail
     | head::tail -> head :: (removeFirst x tail)
 
-let rec move xs i j : 't list = 
-    []
-
-let rec put a j xs =
+let rec put x j xs =
     match j with 
-    | 0 -> a::xs
-    | _ -> xs.Head :: (put a (j-1) xs.Tail)
+    | 0 -> x::xs
+    | _ -> xs.Head :: (put x (j-1) xs.Tail)
+
+let rec move i j (xs: 't list) : 't list = 
+    match i with 
+    | 1 -> put xs.Head (j-1) xs.Tail
+    | _ -> []

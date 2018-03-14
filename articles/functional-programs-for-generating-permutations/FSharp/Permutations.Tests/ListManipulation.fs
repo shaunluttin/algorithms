@@ -12,14 +12,14 @@ let ``put`` (a, j, xs, expected: 't list) =
     // Assert
     Assert.Equal<'t list>(expected, actual)
 
-[<Theory(Skip = "Not implemented")>]
+[<Theory>]
 [<MemberData("moveTestData")>]
-let ``move`` (xs, i, j, expected: List<int>) =
+let ``move`` (i, j, xs, expected: 't list) =
     // Arrange // Act
-    let actual = move xs i j
+    let actual = move i j xs
 
     // Assert
-    Assert.Equal<List<int>>(expected, actual)
+    Assert.Equal<'t list>(expected, actual)
 
 [<Theory>]
 [<MemberData("removeFirstTestData")>]
@@ -30,10 +30,12 @@ let ``removeFirst`` (x, xs, expected: List<int>) =
     // Assert
     Assert.Equal<List<int>>(expected, actual)
 
+// inserts x into xs at the j'th index.
 let putTestData: obj array seq = 
     seq {
-        yield [| "D"; 0; ["A"; "B"; "C"]; ["D"; "A"; "B"; "C"] |]
-        yield [| "D"; 1; ["A"; "B"; "C"]; ["A"; "D"; "B"; "C"] |]
+        yield [| "D"; 0; ["A";"B"]; ["D";"A";"B"] |]
+        yield [| "D"; 1; ["A";"B"]; ["A";"D";"B"] |]
+        yield [| "D"; 2; ["A";"B"]; ["A";"B";"D"] |]
     }
 
 // deletes the i'th element of xs
@@ -41,7 +43,8 @@ let putTestData: obj array seq =
 // [we are assuming that i and j start at one not zero.]
 let moveTestData : obj array seq = 
     seq {
-        yield [| [0;1;2;3]; 1, 2, [1;2;0;3] |]
+        yield [| 1; 2; ["A";"B";"C"]; ["B";"A";"C"] |]
+        // yield [| 1; 3; ["A";"B";"C"]; ["A";"C";"B"] |]
     }
 
 let removeFirstTestData : obj array seq = 
