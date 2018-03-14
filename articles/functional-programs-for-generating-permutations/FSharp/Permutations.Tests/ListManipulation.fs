@@ -4,6 +4,24 @@ open Xunit
 open Permutations.ListManipulation
 
 [<Theory>]
+[<MemberData("putTestData")>]
+let ``put`` (a, x, j, expected: List<int>) =
+    // Arrange // Act
+    let actual = put a x j
+
+    // Assert
+    Assert.Equal<List<int>>(expected, actual)
+
+[<Theory>]
+[<MemberData("moveTestData")>]
+let ``move`` (x, i, j, expected: List<int>) =
+    // Arrange // Act
+    let actual = move x i j
+
+    // Assert
+    Assert.Equal<List<int>>(expected, actual)
+
+[<Theory>]
 [<MemberData("removeFirstTestData")>]
 let ``removeFirst`` (item, list, expected: List<int>) =
     // Arrange // Act

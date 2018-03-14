@@ -9,6 +9,7 @@
     <Compile Include="Permute1.fs" />
     <Compile Include="Permute2.fs" />
     <Compile Include="Permute3.fs" />
+    <Compile Include="Permute4.fs" />
   </ItemGroup>
 
 </Project>
