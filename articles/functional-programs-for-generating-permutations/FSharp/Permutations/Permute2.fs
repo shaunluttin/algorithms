@@ -1,10 +1,6 @@
 module rec Permutations.Permute2
 
-let removeFirst list item =
-    match list with
-    | [] -> []
-    | head::tail when head = item -> tail
-    | head::tail -> head :: (removeFirst tail item)
+open ListManipulation
 
 let mapcons a ps qs =
     let prepended = List.map (fun p -> a :: p) ps

@@ -4,15 +4,6 @@ open Xunit
 open Permutations.Permute2
 
 [<Theory>]
-[<MemberData("removeFirstTestData")>]
-let ``removeFirst`` (item, list, expected: List<int>) =
-    // Arrange // Act
-    let actual = removeFirst list item
-
-    // Assert
-    Assert.Equal<List<int>>(expected, actual)
-
-[<Theory>]
 [<MemberData("mapconsTestData")>]
 let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
@@ -38,19 +29,6 @@ let ``permute`` (x, expected: List<List<int>>) =
 
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
-
-let removeFirstTestData : obj array seq = 
-    seq {
-        // not in list
-        yield [| 0; [1;2;3;4]; [1;2;3;4] |]
-        // in list once
-        yield [| 0; [0;1;2;3]; [1;2;3] |]
-        yield [| 0; [1;0;2;3]; [1;2;3] |]
-        yield [| 0; [1;2;0;3]; [1;2;3] |]
-        yield [| 0; [1;2;3;0]; [1;2;3] |]
-        // in list multiple times
-        yield [| 0; [0;0;0;3]; [0;0;3] |]
-    }
 
 let mapconsTestData : obj array seq = 
     seq {
