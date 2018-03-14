@@ -4,13 +4,13 @@ open Xunit
 open Permutations.Permute1
 
 [<Theory>]
-[<MemberData("permuteTestValues")>]
-let ``permute`` (x, expected) = 
+[<ClassData(typeof<TestData.PermuteLexographic>)>]
+let ``permute`` (x, expected: 't list list) = 
     // Arrange // Act                             
     let actual = permute x
                                                 
     // Assert                                     
-    Assert.Equal<List<int>>(expected, actual);          
+    Assert.Equal<'t list list>(expected, actual);          
 
 [<Theory>]
 [<MemberData("mapinsertTestValues")>]
