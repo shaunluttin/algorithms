@@ -4,7 +4,7 @@ open Xunit
 open Permutations.Permute1
 
 [<Theory>]
-[<ClassData(typeof<TestData.PermuteLexographic>)>]
+[<MemberData("permuteTestValues")>]
 let ``permute`` (x, expected: 't list list) = 
     // Arrange // Act                             
     let actual = permute x
@@ -42,6 +42,7 @@ let ``put`` (a, p, q, expected) =
 let permuteTestValues : obj array seq =                                                            
     seq {                                                                                         
         yield [| [0;1]; [[0;1]; [1;0]] |]
+        // The expected result is in neither lexographic nor reverse-lexographic order.
         yield [| [0;1;2]; [[0;1;2]; [1;0;2]; [1;2;0]; [0;2;1]; [2;0;1]; [2;1;0]] |]
     }                                                                                             
 
