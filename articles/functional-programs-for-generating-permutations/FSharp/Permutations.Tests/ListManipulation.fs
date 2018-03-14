@@ -23,9 +23,9 @@ let ``move`` (x, i, j, expected: List<int>) =
 
 [<Theory>]
 [<MemberData("removeFirstTestData")>]
-let ``removeFirst`` (item, list, expected: List<int>) =
+let ``removeFirst`` (x, xs, expected: List<int>) =
     // Arrange // Act
-    let actual = removeFirst item list
+    let actual = removeFirst x xs
 
     // Assert
     Assert.Equal<List<int>>(expected, actual)
