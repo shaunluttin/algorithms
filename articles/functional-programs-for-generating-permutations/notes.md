@@ -1,4 +1,9 @@
 
+### FSharp List related Symbols
+
+    elem :: list   // append a single element to the front of a list
+    listA @ listB  // concatenate two lists
+
 ### NuGet restore without internet connetion: 
 
 First list the local sources: 
