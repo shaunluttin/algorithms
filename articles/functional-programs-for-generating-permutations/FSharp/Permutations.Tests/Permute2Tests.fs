@@ -22,13 +22,13 @@ let ``mapperm`` (x, y, expected: List<List<int>>) =
     Assert.Equal<List<List<int>>>(expected, actual)
 
 [<Theory>]
-[<MemberData("permuteTestData")>]
-let ``permute`` (x, expected: List<List<int>>) =
+[<ClassData(typeof<TestData.PermuteLexographic>)>]
+let ``permute`` (x, expected: 't list list) =
     // Arrange // Act
     let actual = permute x
 
     // Assert
-    Assert.Equal<List<List<int>>>(expected, actual)
+    Assert.Equal<'t list list>(expected, actual)
 
 let mapconsTestData : obj array seq = 
     seq {
@@ -45,11 +45,4 @@ let mappermTestData : obj array seq =
         yield [| List.empty<int>; List.empty<int>; List.empty<List<int>> |]
         yield [| [0]; [0]; [[0]] |]
         yield [| [0;1]; [0;1]; [[0;1];[1;0]] |]
-    }
-
-let permuteTestData : obj array seq = 
-    seq {
-        yield [| List.empty<int>; [ List.empty<int> ] |]
-        yield [| [0]; [ [0] ] |]
-        yield [| [0;1]; [ [0;1]; [1;0] ] |]
     }
