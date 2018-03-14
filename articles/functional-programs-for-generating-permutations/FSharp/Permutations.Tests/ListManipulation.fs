@@ -38,13 +38,13 @@ let putTestData: obj array seq =
         yield [| "D"; 2; ["A";"B"]; ["A";"B";"D"] |]
     }
 
-// deletes the i'th element of xs
-// and inserts it after the j'th element of xs.
+// deletes the current i'th element of xs
+// and inserts it after the current j'th element of xs.
 // [we are assuming that i and j start at one not zero.]
 let moveTestData : obj array seq = 
     seq {
         yield [| 1; 2; ["A";"B";"C"]; ["B";"A";"C"] |]
-        // yield [| 1; 3; ["A";"B";"C"]; ["A";"C";"B"] |]
+        yield [| 1; 3; ["A";"B";"C"]; ["B";"C";"A";] |]
     }
 
 let removeFirstTestData : obj array seq = 
