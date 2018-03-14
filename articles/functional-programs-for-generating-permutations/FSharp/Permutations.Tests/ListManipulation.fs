@@ -3,20 +3,20 @@ module ListManipulationTests
 open Xunit
 open Permutations.ListManipulation
 
-[<Theory(Skip = "Not implemented")>]
+[<Theory>]
 [<MemberData("putTestData")>]
-let ``put`` (a, x, j, expected: List<int>) =
+let ``put`` (a, xs, j, expected: 't list) =
     // Arrange // Act
-    let actual = put a x j
+    let actual = put a xs j
 
     // Assert
-    Assert.Equal<List<int>>(expected, actual)
+    Assert.Equal<'t list>(expected, actual)
 
 [<Theory(Skip = "Not implemented")>]
 [<MemberData("moveTestData")>]
-let ``move`` (x, i, j, expected: List<int>) =
+let ``move`` (xs, i, j, expected: List<int>) =
     // Arrange // Act
-    let actual = move x i j
+    let actual = move xs i j
 
     // Assert
     Assert.Equal<List<int>>(expected, actual)
@@ -29,6 +29,19 @@ let ``removeFirst`` (x, xs, expected: List<int>) =
 
     // Assert
     Assert.Equal<List<int>>(expected, actual)
+
+let putTestData: obj array seq = 
+    seq {
+        yield [| "D"; ["A"; "B"; "C"]; 0; ["D"; "A"; "B"; "C"] |]
+    }
+
+// deletes the i'th element of xs
+// and inserts it after the j'th element of xs.
+// [we are assuming that i and j start at one not zero.]
+let moveTestData : obj array seq = 
+    seq {
+        yield [| [0;1;2;3]; 1, 2, [1;2;0;3] |]
+    }
 
 let removeFirstTestData : obj array seq = 
     seq {
