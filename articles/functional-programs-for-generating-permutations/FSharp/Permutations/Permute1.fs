@@ -8,13 +8,13 @@ let rec insert a p (q: 't list) ps =
     if q.IsEmpty then (put a p q) :: ps
     else (put a p q) :: (insert a p q.Tail ps) 
 
-let rec mapinsert a (ps: 't list list) =
+let rec mapInsert a (ps: 't list list) =
     if ps.IsEmpty then []
-    else insert a ps.Head ps.Head (mapinsert a ps.Tail)
+    else insert a ps.Head ps.Head (mapInsert a ps.Tail)
 
 let rec permute (xs: 't list) =
     if xs.IsEmpty then [xs]
-    else mapinsert xs.Head (permute xs.Tail)
+    else mapInsert xs.Head (permute xs.Tail)
 
 // The canonical name for this is probably k-permutation.
 // See https://www.statlect.com/mathematical-tools/k-permutations

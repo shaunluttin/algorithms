@@ -25,7 +25,7 @@ let ``permute`` (x, expected: 't list list) =
 [<MemberData("mapinsertTestValues")>]
 let ``mapinsert`` (a, ps, expected) = 
     // Arrange // Act                             
-    let actual = mapinsert a ps      
+    let actual = mapInsert a ps      
                                                 
     // Assert                                     
     Assert.Equal<'t list>(expected, actual);          
