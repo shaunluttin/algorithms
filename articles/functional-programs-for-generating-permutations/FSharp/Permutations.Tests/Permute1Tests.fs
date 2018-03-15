@@ -52,9 +52,9 @@ let permuteOfLengthTestValues : obj array seq =
     seq {                                                                                         
         yield [| 0; [0;1]; [List.empty<int>] |]
         // yield [| 1; List.empty<int>; List.empty<int> |] // fails - is this a use case?
-        yield [| 1; [0;1]; [[0]; [1]] |]
-        yield [| 2; [0;1]; [[0;1]; [1;0]] |]
-        yield [| 2; [0;1;2]; [[0;1]; [1;0]; [1;2]; [0;2]; [2;0]; [2;1]] |]
+        yield [| 1; [0;1]; [[0];[1]] |]
+        yield [| 2; [0;1]; [[0;1];[1;0]] |]
+        yield [| 2; [0;1;2]; [[0;1];[1;0];[0;2];[2;0];[1;2];[2;1]] |]
     }                                                                                             
 
 let permuteTestValues : obj array seq =                                                            

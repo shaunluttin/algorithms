@@ -18,7 +18,6 @@ let rec permute (xs: 't list) =
 
 // TODO: Use the canonical name for selecting all permutations 
 // of lengh k from a set of n elements?
-
 let rec permuteOfLength k (xs: 't list) =
 
     let rec mapInsert a ps qs = 
