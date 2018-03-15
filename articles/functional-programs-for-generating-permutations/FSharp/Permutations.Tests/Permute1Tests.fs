@@ -19,7 +19,7 @@ let ``mapinsert`` (a, ps, expected) =
     let actual = mapinsert a ps      
                                                 
     // Assert                                     
-    Assert.Equal<List<int>>(expected, actual);          
+    Assert.Equal<'t list>(expected, actual);          
 
 [<Theory>]
 [<MemberData("insertTestValues")>]
@@ -28,7 +28,7 @@ let ``insert`` (a, p, q, ps, expected) =
     let actual = insert a p q ps              
                                                         
     // Assert                                              
-    Assert.Equal<List<int>>(expected, actual);                   
+    Assert.Equal<'t list>(expected, actual);                   
 
 [<Theory>]
 [<MemberData("putTestValues")>]
