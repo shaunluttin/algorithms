@@ -12,11 +12,26 @@ let rec mapinsert a (ps: 't list list) =
     if ps.IsEmpty then []
     else insert a ps.Head ps.Head (mapinsert a ps.Tail)
 
-let rec permute (x: 't list) =
-    if x.IsEmpty then [x]
-    else mapinsert x.Head (permute x.Tail)
+let rec permute (xs: 't list) =
+    if xs.IsEmpty then [xs]
+    else mapinsert xs.Head (permute xs.Tail)
 
 // TODO: Use the canonical name for selecting all permutations 
 // of lengh k from a set of n elements?
 
-let rec permuteOfLength k (x: 't list) =
+let rec permuteOfLength k (xs: 't list) =
+
+    let rec mapInsert a ps qs = 
+        match ps with 
+        | [] -> qs
+        | head::tail -> 
+            let mapInsertNext = mapInsert a tail qs
+            insert a head head mapInsertNext
+
+    match k with 
+    | 0 -> [ List.empty<'t> ]
+    | _ when xs.Length < k -> []
+    | _ -> 
+        let permuteK = permuteOfLength k
+        let permuteKminus1 = permuteOfLength (k-1)
+        mapInsert xs.Head (permuteKminus1 xs.Tail) (permuteK xs.Tail) 
