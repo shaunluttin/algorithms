@@ -16,8 +16,8 @@ let rec permute (xs: 't list) =
     if xs.IsEmpty then [xs]
     else mapinsert xs.Head (permute xs.Tail)
 
-// TODO: Use the canonical name for selecting all permutations 
-// of lengh k from a set of n elements?
+// The canonical name for this is probably k-permutation.
+// See https://www.statlect.com/mathematical-tools/k-permutations
 let rec permuteOfLength k (xs: 't list) =
 
     let rec mapInsert a ps qs = 
