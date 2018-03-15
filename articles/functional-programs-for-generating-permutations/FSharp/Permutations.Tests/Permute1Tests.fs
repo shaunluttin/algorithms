@@ -4,6 +4,15 @@ open Xunit
 open Permutations.Permute1
 
 [<Theory>]
+[<MemberData("permuteOfLengthTestValues")>]
+let ``permuteOfLength`` (k, x, expected: 't list list) = 
+    // Arrange // Act                             
+    let actual = permuteOfLength k x
+                                                
+    // Assert                                     
+    Assert.Equal<'t list list>(expected, actual);          
+
+[<Theory>]
 [<MemberData("permuteTestValues")>]
 let ``permute`` (x, expected: 't list list) = 
     // Arrange // Act                             
@@ -38,6 +47,13 @@ let ``put`` (a, p, q, expected) =
                                             
     // Assert                               
     Assert.Equal<int>(expected, actual);    
+
+let permuteOfLengthTestValues : obj array seq =                                                            
+    seq {                                                                                         
+        yield [| 1; [0;1]; [[0]; [1]] |]
+        yield [| 2; [0;1]; [[0;1]; [1;0]] |]
+        yield [| 2; [0;1;2]; [[0;1]; [1;0]; [1;2]; [0;2]; [2;0]; [2;1]] |]
+    }                                                                                             
 
 let permuteTestValues : obj array seq =                                                            
     seq {                                                                                         

@@ -15,3 +15,8 @@ let rec mapinsert a (ps: 't list list) =
 let rec permute (x: 't list) =
     if x.IsEmpty then [x]
     else mapinsert x.Head (permute x.Tail)
+
+// TODO: Use the canonical name for selecting all permutations 
+// of lengh k from a set of n elements?
+
+let rec permuteOfLength k (x: 't list) =
