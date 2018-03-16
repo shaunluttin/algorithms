@@ -3,6 +3,11 @@
 
 The purpose of this ultimate goal is to become vaguely familiar with permutation algorithms and to learn F# syntax/organization.
 
+# Refactors TODO:
+
+* Use xs for collections and x for scalar values.
+* Determine what to use for collection of collections [two dimensional lists.]
+
 # Other Goals (Maybe Someday)
 
 * Modify the algorithms to use multiple threads. 
