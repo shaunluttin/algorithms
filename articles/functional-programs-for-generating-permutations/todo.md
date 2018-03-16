@@ -15,3 +15,4 @@ The purpose of this ultimate goal is to become vaguely familiar with permutation
 * Set up benchmarking in the unit tests.
 * Name the functions according to their canonical names.
 * Analyze each of the algorithms on paper to understand how they work and how we could parallelize them.
+* Add comments to the libraries public API.
