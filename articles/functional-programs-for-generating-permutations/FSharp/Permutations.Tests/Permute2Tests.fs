@@ -39,7 +39,6 @@ let ``kpermute`` (k, xs, expected: 't list list) =
     // Assert
     Assert.Equal<'t list list>(expected, actual)
 
-
 let mapconsTestData : obj array seq = 
     seq {
         yield [| 0; List.empty<List<int>>; List.empty<List<int>>; List.empty<List<int>> |]
