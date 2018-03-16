@@ -18,3 +18,6 @@ let permute x =
     match x with
     | [] -> [[]]
     | _ -> genperm x [] []
+
+let rec kpermute k (xs: 't list) = 
+    failwith "Not implemented"

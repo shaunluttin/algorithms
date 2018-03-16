@@ -11,3 +11,12 @@ let ``permute`` (x, expected: 't list list) =
 
     // Assert
     Assert.Equal<'t list list>(expected, actual)
+
+[<Theory(Skip = "Not implemented")>]
+[<ClassData(typeof<TestData.KPermuteLexographic>)>]
+let ``kpermute`` (k, xs, expected: 't list list) =
+    // Arrange // Act
+    let actual = kpermute k xs
+
+    // Assert
+    Assert.Equal<'t list list>(expected, actual)
