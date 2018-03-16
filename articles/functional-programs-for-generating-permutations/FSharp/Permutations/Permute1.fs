@@ -1,14 +1,15 @@
 module Permutations.Permute1
 
-let rec put a p q =
-    if p = q then a :: q
-    else p.Head :: (put a p.Tail q)
+let rec put a ps qs =
+    if ps = qs then a :: qs
+    else ps.Head :: (put a ps.Tail qs)
 
 let rec insert a p (q: 't list) ps =
-    if q.IsEmpty then (put a p q) :: ps 
-    // the elif allows permutations with repeated elements
-    elif a = q.Head then (put a p q) :: ps 
-    else (put a p q) :: (insert a p q.Tail ps) 
+    match q with 
+    | [] -> (put a p q) :: ps 
+    // this pattern allows permutations with repeated elements
+    | _ when a = q.Head -> (put a p q) :: ps 
+    | _ -> (put a p q) :: (insert a p q.Tail ps) 
 
 let rec mapInsert a (ps: 't list list) =
     if ps.IsEmpty then []
