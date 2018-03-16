@@ -31,7 +31,7 @@ let rec kpermute k (xs: 't list) =
 
     match k with 
     | 0 -> [ List.empty<'t> ]
-    | _ when xs.Length < k -> []
+    | _ when xs.Length < k -> List.empty<'t list>
     | _ -> 
         let permuteK = kpermute k
         let permuteKminus1 = kpermute (k-1)
