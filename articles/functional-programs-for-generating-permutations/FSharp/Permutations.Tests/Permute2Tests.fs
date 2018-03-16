@@ -23,12 +23,22 @@ let ``mapperm`` (x, y, expected: List<List<int>>) =
 
 [<Theory>]
 [<ClassData(typeof<TestData.PermuteLexographic>)>]
-let ``permute`` (x, expected: 't list list) =
+let ``permute`` (xs, expected: 't list list) =
     // Arrange // Act
-    let actual = permute x
+    let actual = permute xs
 
     // Assert
     Assert.Equal<'t list list>(expected, actual)
+
+[<Theory>]
+[<ClassData(typeof<TestData.KPermuteLexographic>)>]
+let ``kpermute`` (k, xs, expected: 't list list) =
+    // Arrange // Act
+    let actual = kpermute k xs
+
+    // Assert
+    Assert.Equal<'t list list>(expected, actual)
+
 
 let mapconsTestData : obj array seq = 
     seq {

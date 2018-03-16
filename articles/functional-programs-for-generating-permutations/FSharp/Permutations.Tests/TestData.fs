@@ -6,7 +6,6 @@ type ClassDataBase (generator: obj array seq) =
         member this.GetEnumerator () = 
             generator.GetEnumerator() :> System.Collections.IEnumerator
 
-
 type PermuteLexographic () = 
     inherit ClassDataBase(seq 
         {                                                                                         
@@ -31,8 +30,6 @@ type PermuteLexographic () =
                 [[0;1;2]; [0;2;1]; [1;0;2]; [1;2;0]; [2;0;1]; [2;1;0]] 
             |]
         })
-                                                                                                 
-
 
 type PermuteReverseLexographic () = 
     inherit ClassDataBase(seq 
@@ -54,3 +51,22 @@ type PermuteReverseLexographic () =
             |]
         })
         
+type KPermuteLexographic () = 
+    inherit ClassDataBase(seq 
+        {                                                                                         
+            yield [| 
+                0,
+                ["A";"B";"C"]; 
+                [List.empty<int>]
+            |]
+            yield [| 
+                1,
+                ["A";"B";"C"]; 
+                [["A"];["B"];["C"]]
+            |]
+            yield [| 
+                2,
+                ["A";"B";"C"]; 
+                [["A";"B"];["A";"C"];["B";"A"];["B";"C"];["C";"A"];["C";"B"]]
+            |]
+        })

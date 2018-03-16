@@ -25,5 +25,5 @@ let permute xs =
     | [] -> [ [] ]
     | _ -> mapperm xs xs
 
-let kpermute k xs =
+let kpermute k (xs: 't list) : 't list list =
     failwith "Not implemented"

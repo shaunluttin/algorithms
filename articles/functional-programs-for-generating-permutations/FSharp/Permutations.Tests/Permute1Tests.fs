@@ -51,7 +51,8 @@ let ``put`` (a, p, q, expected) =
 let kpermuteTestValues : obj array seq =                                                            
     seq {                                                                                         
         yield [| 0; [0;1]; [List.empty<int>] |]
-        // yield [| 1; List.empty<int>; List.empty<int> |] // fails - is this a use case?
+        // TODO: Gracefully handle the error that occurs when K exceeds N.
+        // yield [| 1; List.empty<int>; List.empty<int> |] 
         yield [| 1; [0;1]; [[0];[1]] |]
         yield [| 2; [0;1]; [[0;1];[1;0]] |]
         yield [| 2; [0;1;2]; [[0;1];[1;0];[0;2];[2;0];[1;2];[2;1]] |]
