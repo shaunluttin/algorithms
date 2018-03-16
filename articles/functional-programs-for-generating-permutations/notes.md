@@ -1,4 +1,17 @@
 
+### Permutation-related Terminology
+
+* multiset: a set which may contain duplicate items; multiset equality depends on element order.
+* permutation: order matters
+* combination: order does matter
+
+Names of permutation types: 
+
+1. permutations of length N from a set of length N (set contains no duplicates; order does not matter)
+2. permutations of length K <= N from a set of length N
+3. permutations of length N from a multiset of length N (multiset contains duplicates; order matters)
+4. permutation orders: lexographic; reverse lexographic
+
 ### FSharp List related Symbols
 
     elem :: list   // append a single element to the front of a list

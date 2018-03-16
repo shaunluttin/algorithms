@@ -19,5 +19,11 @@ let permute x =
     | [] -> [[]]
     | _ -> genperm x [] []
 
+(*
+    "permute3 can be revised in an analogous way [as permute2], but it is awkward
+    to modify permute4 to solve this [permutations of length K <= N] problem as 
+    it has no explicit pointer to the partial permutation p." (Topor 1982)
+*)
 let rec kpermute k (xs: 't list) = 
+    // TODO Implement permute3 for K <= N once we've implemented the article's other examples.
     failwith "Not implemented"

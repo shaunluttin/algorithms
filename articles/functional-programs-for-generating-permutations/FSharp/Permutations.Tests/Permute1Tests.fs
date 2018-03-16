@@ -46,40 +46,48 @@ let ``put`` (a, p, q, expected) =
     let actual = put a p q     
                                             
     // Assert                               
-    Assert.Equal<int>(expected, actual);    
+    Assert.Equal<'t>(expected, actual);    
 
+// Permutations with repeated elements.
+// let rpermuteTestValues : obj array seq =                                                            
+//     seq {                                                                                         
+//     }                                                                                             
+
+// Permutations of length K <= N
 let kpermuteTestValues : obj array seq =                                                            
     seq {                                                                                         
-        yield [| 0; [0;1]; [List.empty<int>] |]
-        // TODO: Pass this test.
-        yield [| 1; List.empty<int>; List.empty<int list> |] 
-        yield [| 1; [0;1]; [[0];[1]] |]
-        yield [| 2; [0;1]; [[0;1];[1;0]] |]
-        yield [| 2; [0;1;2]; [[0;1];[1;0];[0;2];[2;0];[1;2];[2;1]] |]
+        yield [| 0; ["A";"B"]; [List.empty<string>] |]
+        yield [| 1; List.empty<string>; List.empty<string list> |] 
+        yield [| 1; ["A";"B"]; [["A"];["B"]] |]
+        yield [| 2; ["A";"B"]; [["A";"B"];["B";"A"]] |]
+        yield [| 2; ["A";"B";"C"]; [["A";"B"];["B";"A"];["A";"C"];["C";"A"];["B";"C"];["C";"B"]] |]
     }                                                                                             
 
+// Permutations of length N = N
 let permuteTestValues : obj array seq =                                                            
     seq {                                                                                         
-        yield [| [0;1]; [[0;1]; [1;0]] |]
-        // The expected result is in neither lexographic nor reverse-lexographic order.
-        yield [| [0;1;2]; [[0;1;2]; [1;0;2]; [1;2;0]; [0;2;1]; [2;0;1]; [2;1;0]] |]
+        yield [| ["A";"B"]; [["A";"B"]; ["B";"A"]] |]
+        // These values are here instead of in the shared TestData.fs file,
+        // because the values are specific to the Permute1 algorithm, 
+        // which returns permutations in neither lexographic nor reverse-lexographic order.
+        yield [| ["A";"B";"C"]; [["A";"B";"C"]; ["B";"A";"C"]; ["B";"C";"A"]; ["A";"C";"B"]; ["C";"A";"B"]; ["C";"B";"A"]] |]
     }                                                                                             
 
 let mapinsertTestValues : obj array seq =                                                            
     seq {                                                                                         
-        yield [| 0; List.empty<List<int>>; List.empty<List<int>> |]
-        yield [| 1; [[0]]; [[1;0]; [0;1]] |]
+        yield [| "A"; List.empty<string list>; List.empty<string list> |]
+        yield [| "B"; [["A"]]; [["B";"A"]; ["A";"B"]] |]
     }                                                                                             
                                                                                                   
 let insertTestValues : obj array seq =                                                            
     seq {                                                                                         
-        yield [| 0; [1;2]; [2]; List.empty<List<int>>; [[1;0;2]; [1;2;0]] |]
+        yield [| "A"; ["B";"C"]; ["C"]; List.empty<string list>; [["B";"A";"C"]; ["B";"C";"A"]] |]
     }                                                                                             
                                                                                                   
 let putTestValues : obj array seq =                           
     seq {                                                     
-        yield [| 0; [1;2;3]; List.empty<int>; [1;2;3;0] |]      
-        yield [| 0; [1;2;3]; [3]; [1;2;0;3] |]                  
-        yield [| 0; [1;2;3]; [2;3]; [1;0;2;3] |]                
-        yield [| 0; [1;2;3]; [1;2;3]; [0;1;2;3] |]              
+        yield [| "A"; ["B";"C";"D"]; List.empty<string>; ["B";"C";"D";"A"] |]      
+        yield [| "A"; ["B";"C";"D"]; ["D"]; ["B";"C";"A";"D"] |]                  
+        yield [| "A"; ["B";"C";"D"]; ["C";"D"]; ["B";"A";"C";"D"] |]                
+        yield [| "A"; ["B";"C";"D"]; ["B";"C";"D"]; ["A";"B";"C";"D"] |]              
     }                                                         
