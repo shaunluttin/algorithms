@@ -4,6 +4,15 @@ open Xunit
 open Permutations.Permute1
 
 [<Theory>]
+[<MemberData("rpermuteTestValues")>]
+let ``rpermute`` (x, expected: 't list list) = 
+    // Arrange // Act                             
+    let actual = rpermute x
+                                                
+    // Assert                                     
+    Assert.Equal<'t list list>(expected, actual);          
+
+[<Theory>]
 [<MemberData("kpermuteTestValues")>]
 let ``kpermute`` (k, x, expected: 't list list) = 
     // Arrange // Act                             
@@ -49,9 +58,12 @@ let ``put`` (a, p, q, expected) =
     Assert.Equal<'t>(expected, actual);    
 
 // Permutations with repeated elements.
-// let rpermuteTestValues : obj array seq =                                                            
-//     seq {                                                                                         
-//     }                                                                                             
+let rpermuteTestValues : obj array seq =                                                            
+    seq {                                                                                         
+        yield [| 
+            ["A";"A";"B";"B"]; 
+            [["A";"A";"B";"B"];["A";"B";"A";"B"];["A";"B";"B";"A"];["B";"A";"A";"B"];["B";"A";"B";"A"];["B";"B";"A";"A"]] |]
+    }                                                                                             
 
 // Permutations of length K <= N
 let kpermuteTestValues : obj array seq =                                                            
@@ -66,10 +78,10 @@ let kpermuteTestValues : obj array seq =
 // Permutations of length N = N
 let permuteTestValues : obj array seq =                                                            
     seq {                                                                                         
-        yield [| ["A";"B"]; [["A";"B"]; ["B";"A"]] |]
-        // These values are here instead of in the shared TestData.fs file,
+        // These test values are here instead of in the shared TestData.fs file,
         // because the values are specific to the Permute1 algorithm, 
         // which returns permutations in neither lexographic nor reverse-lexographic order.
+        yield [| ["A";"B"]; [["A";"B"]; ["B";"A"]] |]
         yield [| ["A";"B";"C"]; [["A";"B";"C"]; ["B";"A";"C"]; ["B";"C";"A"]; ["A";"C";"B"]; ["C";"A";"B"]; ["C";"B";"A"]] |]
     }                                                                                             
 
