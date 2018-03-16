@@ -5,7 +5,7 @@ open Permutations.Permute2
 
 [<Theory>]
 [<MemberData("mapconsTestData")>]
-let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
+let ``mapconsTest`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
     let actual = mapcons item ps qs
 
@@ -14,7 +14,7 @@ let ``mapcons`` (item, ps, qs, expected: List<List<int>>) =
 
 [<Theory>]
 [<MemberData("mappermTestData")>]
-let ``mapperm`` (x, y, expected: List<List<int>>) =
+let ``mappermTest`` (x, y, expected: List<List<int>>) =
     // Arrange // Act
     let actual = mapperm x y
 
@@ -23,7 +23,16 @@ let ``mapperm`` (x, y, expected: List<List<int>>) =
 
 [<Theory>]
 [<ClassData(typeof<TestData.PermuteLexographic>)>]
-let ``permute`` (xs, expected: 't list list) =
+let ``permuteTest`` (xs, expected: 't list list) =
+    // Arrange // Act
+    let actual = permute xs
+
+    // Assert
+    Assert.Equal<'t list list>(expected, actual)
+
+[<Theory>]
+[<ClassData(typeof<TestData.RPermuteLexographic>)>]
+let ``rpermuteTest`` (xs, expected: 't list list) =
     // Arrange // Act
     let actual = permute xs
 
@@ -32,7 +41,7 @@ let ``permute`` (xs, expected: 't list list) =
 
 [<Theory>]
 [<ClassData(typeof<TestData.KPermuteLexographic>)>]
-let ``kpermute`` (k, xs, expected: 't list list) =
+let ``kpermuteTest`` (k, xs, expected: 't list list) =
     // Arrange // Act
     let actual = kpermute k xs
 

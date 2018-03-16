@@ -5,7 +5,7 @@ open Permutations.Permute3
 
 [<Theory>]
 [<ClassData(typeof<TestData.PermuteReverseLexographic>)>]
-let ``permute`` (x, expected: 't list list) =
+let ``permuteTest`` (x, expected: 't list list) =
     // Arrange // Act
     let actual = permute x
 
@@ -14,7 +14,7 @@ let ``permute`` (x, expected: 't list list) =
 
 [<Theory(Skip = "Not implemented")>]
 [<ClassData(typeof<TestData.KPermuteLexographic>)>]
-let ``kpermute`` (k, xs, expected: 't list list) =
+let ``kpermuteTest`` (k, xs, expected: 't list list) =
     // Arrange // Act
     let actual = kpermute k xs
 

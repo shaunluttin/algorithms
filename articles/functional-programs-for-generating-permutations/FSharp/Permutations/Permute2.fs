@@ -20,9 +20,9 @@ let mapperm xs ys =
         let mappermNext = mapperm xs tail
         mapcons head permuteNext mappermNext
 
-let permute xs =
+let permute (xs : 't list) : 't list list =
     match xs with 
-    | [] -> [ [] ]
+    | [] -> [[]]
     | _ -> mapperm xs xs
 
 let rec kpermute k (xs: 't list) = 

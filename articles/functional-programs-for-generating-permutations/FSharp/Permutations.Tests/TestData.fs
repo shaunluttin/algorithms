@@ -70,3 +70,19 @@ type KPermuteLexographic () =
                 [["A";"B"];["A";"C"];["B";"A"];["B";"C"];["C";"A"];["C";"B"]]
             |]
         })
+
+type RPermuteLexographic () = 
+    inherit ClassDataBase(seq 
+        {                                                                                         
+            yield [| 
+                ["A";"A";"B";"B"]; 
+                [   
+                    ["A";"A";"B";"B"];
+                    ["A";"B";"A";"B"];
+                    ["B";"A";"A";"B"];
+                    ["A";"B";"B";"A"];
+                    ["B";"A";"B";"A"];
+                    ["B";"B";"A";"A"]
+                ] 
+            |]
+        })

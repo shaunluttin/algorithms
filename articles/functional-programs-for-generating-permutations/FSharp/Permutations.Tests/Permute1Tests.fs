@@ -5,7 +5,7 @@ open Permutations.Permute1
 
 [<Theory>]
 [<MemberData("rpermuteTestValues")>]
-let ``rpermute`` (x, expected: 't list list) = 
+let ``rpermuteTest`` (x, expected: 't list list) = 
     // Arrange // Act                             
     let actual = permute x
                                                 
@@ -14,7 +14,7 @@ let ``rpermute`` (x, expected: 't list list) =
 
 [<Theory>]
 [<MemberData("kpermuteTestValues")>]
-let ``kpermute`` (k, x, expected: 't list list) = 
+let ``kpermuteTest`` (k, x, expected: 't list list) = 
     // Arrange // Act                             
     let actual = kpermute k x
                                                 
@@ -23,7 +23,7 @@ let ``kpermute`` (k, x, expected: 't list list) =
 
 [<Theory>]
 [<MemberData("permuteTestValues")>]
-let ``permute`` (x, expected: 't list list) = 
+let ``permuteTest`` (x, expected: 't list list) = 
     // Arrange // Act                             
     let actual = permute x
                                                 
@@ -32,7 +32,7 @@ let ``permute`` (x, expected: 't list list) =
 
 [<Theory>]
 [<MemberData("mapinsertTestValues")>]
-let ``mapinsert`` (a, ps, expected) = 
+let ``mapinsertTest`` (a, ps, expected) = 
     // Arrange // Act                             
     let actual = mapInsert a ps      
                                                 
@@ -41,7 +41,7 @@ let ``mapinsert`` (a, ps, expected) =
 
 [<Theory>]
 [<MemberData("insertTestValues")>]
-let ``insert`` (a, p, q, ps, expected) = 
+let ``insertTest`` (a, p, q, ps, expected) = 
     // Arrange // Act                                      
     let actual = insert a p q ps              
                                                         
@@ -50,7 +50,7 @@ let ``insert`` (a, p, q, ps, expected) =
 
 [<Theory>]
 [<MemberData("putTestValues")>]
-let ``put`` (a, p, q, expected) = 
+let ``putTest`` (a, p, q, expected) = 
     // Arrange // Act                       
     let actual = put a p q     
                                             
