@@ -12,15 +12,18 @@ let mapconsRecursive a ps qs =
     | [] -> qs
     | head::tail -> (a :: head) :: mapcons a tail qs
 
-let mapperm x y =
-    match y with 
+let mapperm xs ys =
+    match ys with 
     | [] -> []
     | head::tail -> 
-        let permuteNext = permute (removeFirst head x)
-        let mappermNext = mapperm x tail
+        let permuteNext = permute (removeFirst head xs)
+        let mappermNext = mapperm xs tail
         mapcons head permuteNext mappermNext
 
-let permute x =
-    match x with 
+let permute xs =
+    match xs with 
     | [] -> [ [] ]
-    | _ -> mapperm x x
+    | _ -> mapperm xs xs
+
+let kpermute k xs =
+    failwith "Not implemented"
