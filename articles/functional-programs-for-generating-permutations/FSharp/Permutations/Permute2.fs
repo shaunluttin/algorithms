@@ -36,6 +36,6 @@ let rec kpermute k (xs: 't list) =
             mapcons head kpermuteNext mapPermNext
 
     match k with 
-    | 0 -> [ List.empty<'t> ]
-    | _ when xs.Length < k -> List.empty<'t list>
+    | 0 -> [[]]
+    | _ when xs.Length < k -> []
     | _ -> mapPerm k xs xs 

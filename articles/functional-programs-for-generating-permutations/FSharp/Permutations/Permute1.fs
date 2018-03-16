@@ -30,10 +30,8 @@ let rec kpermute k (xs: 't list) =
             insert a head head mapInsertNext
 
     match k with 
-    | 0 -> [ List.empty<'t> ]
-    // TODO: Consider a better representation of nil than an empty list.
-    // This is a possible StackOverflow question: How to represent nil in F#?
-    | _ when xs.Length < k -> List.empty<'t list>
+    | 0 -> [[]]
+    | _ when xs.Length < k -> []
     | _ -> 
         let permuteK = kpermute k
         let permuteKminus1 = kpermute (k-1)

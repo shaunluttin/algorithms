@@ -17,5 +17,5 @@ let genPerm xs j ps : 't list list =
 
 let permute xs : 't list list = 
     match xs with 
-    | [] -> [ [] ]
+    | [] -> [[]]
     | _ -> genPerm xs xs.Length []

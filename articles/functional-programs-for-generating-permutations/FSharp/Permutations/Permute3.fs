@@ -16,5 +16,5 @@ let genperm x p ps =
 
 let permute x =
     match x with
-    | [] -> [ [] ]
+    | [] -> [[]]
     | _ -> genperm x [] []
