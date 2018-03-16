@@ -55,17 +55,17 @@ type KPermuteLexographic () =
     inherit ClassDataBase(seq 
         {                                                                                         
             yield [| 
-                0,
+                0;
                 ["A";"B";"C"]; 
-                [List.empty<int>]
+                [List.empty<string>]
             |]
             yield [| 
-                1,
+                1;
                 ["A";"B";"C"]; 
                 [["A"];["B"];["C"]]
             |]
             yield [| 
-                2,
+                2;
                 ["A";"B";"C"]; 
                 [["A";"B"];["A";"C"];["B";"A"];["B";"C"];["C";"A"];["C";"B"]]
             |]

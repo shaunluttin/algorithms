@@ -25,5 +25,17 @@ let permute xs =
     | [] -> [ [] ]
     | _ -> mapperm xs xs
 
-let kpermute k (xs: 't list) : 't list list =
-    failwith "Not implemented"
+let rec kpermute k (xs: 't list) = 
+
+    let rec mapPerm k xs ys =
+        match ys with 
+        | [] -> []
+        | head::tail -> 
+            let kpermuteNext = kpermute (k-1) (removeFirst head xs)
+            let mapPermNext = mapPerm k xs tail
+            mapcons head kpermuteNext mapPermNext
+
+    match k with 
+    | 0 -> [ List.empty<'t> ]
+    | _ when xs.Length < k -> List.empty<'t list>
+    | _ -> mapPerm k xs xs 
