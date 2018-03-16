@@ -62,7 +62,15 @@ let rpermuteTestValues : obj array seq =
     seq {                                                                                         
         yield [| 
             ["A";"A";"B";"B"]; 
-            [["A";"A";"B";"B"];["A";"B";"A";"B"];["A";"B";"B";"A"];["B";"A";"A";"B"];["B";"A";"B";"A"];["B";"B";"A";"A"]] |]
+            [   
+                ["A";"A";"B";"B"];
+                ["A";"B";"A";"B"];
+                ["B";"A";"A";"B"];
+                ["A";"B";"B";"A"];
+                ["B";"A";"B";"A"];
+                ["B";"B";"A";"A"]
+            ] 
+        |]
     }                                                                                             
 
 // Permutations of length K <= N

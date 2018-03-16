@@ -5,7 +5,9 @@ let rec put a p q =
     else p.Head :: (put a p.Tail q)
 
 let rec insert a p (q: 't list) ps =
-    if q.IsEmpty then (put a p q) :: ps
+    if q.IsEmpty then (put a p q) :: ps 
+    // the elif allows permutations with repeated elements
+    elif a = q.Head then (put a p q) :: ps 
     else (put a p q) :: (insert a p q.Tail ps) 
 
 let rec mapInsert a (ps: 't list list) =
