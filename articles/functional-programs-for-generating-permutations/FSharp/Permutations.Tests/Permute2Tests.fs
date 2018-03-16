@@ -16,7 +16,7 @@ let ``mapconsTest`` (item, ps, qs, expected: List<List<int>>) =
 [<MemberData("mappermTestData")>]
 let ``mappermTest`` (x, y, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = mapperm x y
+    let actual = mapperm x y []
 
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
