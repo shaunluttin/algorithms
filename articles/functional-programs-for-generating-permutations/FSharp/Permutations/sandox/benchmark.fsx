@@ -3,6 +3,7 @@
 #load "Permute2.fs";
 #load "Permute3.fs";
 #load "Permute4.fs";
+
 let input = [0..7];
 let sw = new System.Diagnostics.Stopwatch();
 
@@ -26,4 +27,3 @@ let t4 = sw.ElapsedTicks;
 // t2 399989L
 // t3 142340L
 // t4 27414L
-

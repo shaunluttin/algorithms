@@ -4,10 +4,10 @@ open Xunit
 open Permutations.Permute1
 
 [<Theory>]
-[<MemberData("permuteOfLengthTestValues")>]
-let ``permuteOfLength`` (k, x, expected: 't list list) = 
+[<MemberData("kpermuteTestValues")>]
+let ``kpermute`` (k, x, expected: 't list list) = 
     // Arrange // Act                             
-    let actual = permuteOfLength k x
+    let actual = kpermute k x
                                                 
     // Assert                                     
     Assert.Equal<'t list list>(expected, actual);          
@@ -48,7 +48,7 @@ let ``put`` (a, p, q, expected) =
     // Assert                               
     Assert.Equal<int>(expected, actual);    
 
-let permuteOfLengthTestValues : obj array seq =                                                            
+let kpermuteTestValues : obj array seq =                                                            
     seq {                                                                                         
         yield [| 0; [0;1]; [List.empty<int>] |]
         // yield [| 1; List.empty<int>; List.empty<int> |] // fails - is this a use case?

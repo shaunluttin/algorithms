@@ -12,13 +12,15 @@ let rec mapInsert a (ps: 't list list) =
     if ps.IsEmpty then []
     else insert a ps.Head ps.Head (mapInsert a ps.Tail)
 
+// Returns all permutations of length N out of N elements.
 let rec permute (xs: 't list) =
     if xs.IsEmpty then [xs]
     else mapInsert xs.Head (permute xs.Tail)
 
+// Returns all permutations of length K out of N elements.
 // The canonical name for this is probably k-permutation.
 // See https://www.statlect.com/mathematical-tools/k-permutations
-let rec permuteOfLength k (xs: 't list) =
+let rec kpermute k (xs: 't list) =
 
     let rec mapInsert a ps qs = 
         match ps with 
@@ -31,6 +33,6 @@ let rec permuteOfLength k (xs: 't list) =
     | 0 -> [ List.empty<'t> ]
     | _ when xs.Length < k -> []
     | _ -> 
-        let permuteK = permuteOfLength k
-        let permuteKminus1 = permuteOfLength (k-1)
+        let permuteK = kpermute k
+        let permuteKminus1 = kpermute (k-1)
         mapInsert xs.Head (permuteKminus1 xs.Tail) (permuteK xs.Tail) 
