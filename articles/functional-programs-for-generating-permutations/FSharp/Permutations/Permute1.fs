@@ -16,6 +16,7 @@ let rec mapInsert a (ps: 't list list) =
     else insert a ps.Head ps.Head (mapInsert a ps.Tail)
 
 // Returns all permutations of length N out of a set of N elements.
+// Returns all permutations of length N out of a multiset of N elements.
 let rec permute (xs: 't list) =
     if xs.IsEmpty then [xs]
     else mapInsert xs.Head (permute xs.Tail)
@@ -39,8 +40,3 @@ let rec kpermute k (xs: 't list) =
         let permuteK = kpermute k
         let permuteKminus1 = kpermute (k-1)
         mapInsert xs.Head (permuteKminus1 xs.Tail) (permuteK xs.Tail) 
-
-// Returns all permutations of length N out of a multiset of N elements.
-let rec rpermute (xs: 't list) =
-    if xs.IsEmpty then [xs]
-    else mapInsert xs.Head (permute xs.Tail)

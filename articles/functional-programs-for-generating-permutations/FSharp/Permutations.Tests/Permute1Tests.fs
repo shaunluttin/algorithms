@@ -7,7 +7,7 @@ open Permutations.Permute1
 [<MemberData("rpermuteTestValues")>]
 let ``rpermute`` (x, expected: 't list list) = 
     // Arrange // Act                             
-    let actual = rpermute x
+    let actual = permute x
                                                 
     // Assert                                     
     Assert.Equal<'t list list>(expected, actual);          
