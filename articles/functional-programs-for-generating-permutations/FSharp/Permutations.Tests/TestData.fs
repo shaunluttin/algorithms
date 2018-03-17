@@ -14,20 +14,20 @@ type PermuteLexographic () =
                 [["A";"B"]; ["B";"A"]]
             |]
             yield [|
-                List.empty<int>;
-                [ List.empty<int> ]
+                List.empty<string>;
+                [ List.empty<string> ]
             |]
             yield [|
-                [0];
-                [[0]]
+                ["A"];
+                [["A"]]
             |]
             yield [|
-                [0;1];
-                [[0;1];[1;0]]
+                ["A";"B"];
+                [["A";"B"];["B";"A"]]
             |]
             yield [|
-                [0;1;2];
-                [[0;1;2]; [0;2;1]; [1;0;2]; [1;2;0]; [2;0;1]; [2;1;0]]
+                ["A";"B";"C"];
+                [["A";"B";"C"]; ["A";"C";"B"]; ["B";"A";"C"]; ["B";"C";"A"]; ["C";"A";"B"]; ["C";"B";"A"]]
             |]
         })
 
@@ -43,11 +43,11 @@ type PermuteReverseLexographic () =
                 [ List.empty<int> ]
             |]
             yield [|
-                [0];
-                [[0]]
+                ["A"];
+                [["A"]]
             |]
             yield [|
-                [0;1]; [ [0;1]; [1;0] ]
+                ["A";"B"]; [ ["A";"B"]; ["B";"A"] ]
             |]
         })
 
