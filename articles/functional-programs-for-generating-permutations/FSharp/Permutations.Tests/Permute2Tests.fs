@@ -4,32 +4,32 @@ open Xunit
 open Permutations.Permute2
 
 [<Theory>]
-[<MemberData("mapconsTestData")>]
-let ``mapconsTest`` (item, ps, qs, expected: List<List<int>>) =
+[<MemberData("mapConsTestData")>]
+let ``mapConsTest`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
     let actual = mapCons item ps qs
 
     // Assert
-    Assert.Equal<List<List<int>>>(expected, actual)
+    Assert.Equal<'t list list>(expected, actual)
 
 [<Theory>]
-[<MemberData("mapconsTestData")>]
-let ``mapconsRecursiveTest`` (item, ps, qs, expected: List<List<int>>) =
+[<MemberData("mapConsTestData")>]
+let ``mapConsRecursiveTest`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
     let actual = mapConsRecursive item ps qs
 
     // Assert
-    Assert.Equal<List<List<int>>>(expected, actual)
+    Assert.Equal<'t list list>(expected, actual)
 
 
 [<Theory>]
-[<MemberData("mappermTestData")>]
-let ``mappermTest`` (x, y, expected: List<List<int>>) =
+[<MemberData("mapPermTestData")>]
+let ``mapPermTest`` (x, y, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = mapperm x y []
+    let actual = mapPerm x y []
 
     // Assert
-    Assert.Equal<List<List<int>>>(expected, actual)
+    Assert.Equal<'t list list>(expected, actual)
 
 [<Theory>]
 [<ClassData(typeof<TestData.PermuteLexographic>)>]
@@ -58,7 +58,7 @@ let ``kpermuteTest`` (k, xs, expected: 't list list) =
     // Assert
     Assert.Equal<'t list list>(expected, actual)
 
-let mapconsTestData : obj array seq =
+let mapConsTestData : obj array seq =
     seq {
         yield [| 0; List.empty<List<int>>; List.empty<List<int>>; List.empty<List<int>> |]
         yield [| 0; [ List.empty<int> ]; List.empty<List<int>>; [ [0] ] |]
@@ -68,7 +68,7 @@ let mapconsTestData : obj array seq =
         yield [| 0; [ [1] ]; [ [1;0] ]; [ [0;1]; [1;0] ] |]
     }
 
-let mappermTestData : obj array seq =
+let mapPermTestData : obj array seq =
     seq {
         yield [| List.empty<int>; List.empty<int>; List.empty<List<int>> |]
         yield [| [0]; [0]; [[0]] |]

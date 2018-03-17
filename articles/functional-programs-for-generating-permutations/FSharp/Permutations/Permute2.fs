@@ -12,20 +12,20 @@ let mapConsRecursive a ps qs =
     | [] -> qs
     | head::tail -> (a :: head) :: mapConsRecursive a tail qs
 
-let mapperm xs ys zs =
+let mapPerm xs ys zs =
     match ys with
     | [] -> []
     // this pattern allows permutations with repeated elements
-    | head::tail when zs |> List.contains head -> mapperm xs tail zs
+    | head::tail when zs |> List.contains head -> mapPerm xs tail zs
     | head::tail ->
         let permuteNext = permute (removeFirst head xs)
-        let mappermNext = mapperm xs tail (head::zs)
-        mapCons head permuteNext mappermNext
+        let mapPermNext = mapPerm xs tail (head::zs)
+        mapCons head permuteNext mapPermNext
 
 let permute (xs : 't list) : 't list list =
     match xs with
     | [] -> [[]]
-    | _ -> mapperm xs xs []
+    | _ -> mapPerm xs xs []
 
 let rec kpermute k (xs: 't list) =
 
