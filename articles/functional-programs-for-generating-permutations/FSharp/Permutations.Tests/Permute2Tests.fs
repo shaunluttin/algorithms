@@ -7,10 +7,20 @@ open Permutations.Permute2
 [<MemberData("mapconsTestData")>]
 let ``mapconsTest`` (item, ps, qs, expected: List<List<int>>) =
     // Arrange // Act
-    let actual = mapcons item ps qs
+    let actual = mapCons item ps qs
 
     // Assert
     Assert.Equal<List<List<int>>>(expected, actual)
+
+[<Theory>]
+[<MemberData("mapconsTestData")>]
+let ``mapconsRecursiveTest`` (item, ps, qs, expected: List<List<int>>) =
+    // Arrange // Act
+    let actual = mapConsRecursive item ps qs
+
+    // Assert
+    Assert.Equal<List<List<int>>>(expected, actual)
+
 
 [<Theory>]
 [<MemberData("mappermTestData")>]

@@ -2,15 +2,15 @@ module rec Permutations.Permute2
 
 open ListManipulation
 
-let mapcons a ps qs =
+let mapCons a ps qs =
     let prepended = List.map (fun p -> a :: p) ps
     prepended @ qs
 
 // The recursive version is here for posterity.
-let mapconsRecursive a ps qs =
+let mapConsRecursive a ps qs =
     match ps with
     | [] -> qs
-    | head::tail -> (a :: head) :: mapcons a tail qs
+    | head::tail -> (a :: head) :: mapConsRecursive a tail qs
 
 let mapperm xs ys zs =
     match ys with
@@ -20,7 +20,7 @@ let mapperm xs ys zs =
     | head::tail ->
         let permuteNext = permute (removeFirst head xs)
         let mappermNext = mapperm xs tail (head::zs)
-        mapcons head permuteNext mappermNext
+        mapCons head permuteNext mappermNext
 
 let permute (xs : 't list) : 't list list =
     match xs with
@@ -35,7 +35,7 @@ let rec kpermute k (xs: 't list) =
         | head::tail ->
             let kpermuteNext = kpermute (k-1) (removeFirst head xs)
             let mapPermNext = mapPerm k xs tail
-            mapcons head kpermuteNext mapPermNext
+            mapCons head kpermuteNext mapPermNext
 
     match k with
     | 0 -> [[]]
