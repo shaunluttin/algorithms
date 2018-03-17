@@ -58,6 +58,7 @@ let ``kpermuteTest`` (k, xs, expected: 't list list) =
     // Assert
     Assert.Equal<'t list list>(expected, actual)
 
+// TODO Use letters not numbers for the list type
 let mapConsTestData : obj array seq =
     seq {
         yield [| 0; List.empty<List<int>>; List.empty<List<int>>; List.empty<List<int>> |]
@@ -68,6 +69,7 @@ let mapConsTestData : obj array seq =
         yield [| 0; [ [1] ]; [ [1;0] ]; [ [0;1]; [1;0] ] |]
     }
 
+// TODO Use letters not numbers for the list type
 let mapPermTestData : obj array seq =
     seq {
         yield [| List.empty<int>; List.empty<int>; List.empty<List<int>> |]
