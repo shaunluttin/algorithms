@@ -58,6 +58,10 @@ let ``putTest`` (a, p, q, expected) =
     Assert.Equal<'t>(expected, actual);    
 
 // Permutations with repeated elements.
+// TODO: The article (Topor, 1982) states that this should not work without
+// additional changes to permute1. See equation 20 in the article. Figure out
+// why this currently works (e.g. maybe the test data is invalid) and then fix
+// the problem by using more rhobust test data.
 let repeatedPermuteTestValues : obj array seq =                                                            
     seq {                                                                                         
         yield [| 
