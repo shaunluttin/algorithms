@@ -54,4 +54,5 @@ let firstUpTestData : obj array seq =
     seq {                                                                                         
         yield [| ["A";"B";"C"]; ["B";"C"] |]
         yield [| ["B";"A";"C"]; ["C"] |]
+        yield [| ["C";"B";"A"]; List.empty<string> |]
     }                                                                                             
