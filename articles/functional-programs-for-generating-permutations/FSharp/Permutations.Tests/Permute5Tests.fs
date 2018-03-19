@@ -3,40 +3,57 @@ module Permute5Tests
 open Xunit
 open Permutations.Permute5
 
-[<Theory>]
-[<MemberData("genRevTestData")>]
-let ``genRev`` () =
-    // Arrange // Act 
+// [<Theory(Skip = "TODO")>]
+// [<MemberData("genRevTestData")>]
+// let ``genRevTest`` =
+//     // Arrange // Act 
     
-    // Assert
-    Assert.Equal(true, false)
+//     // Assert
+//     Assert.Equal(true, false)
 
-[<Theory>]
-[<MemberData("next3TestData")>]
-let ``next3`` =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+// [<Theory(Skip = "TODO")>]
+// [<MemberData("next3TestData")>]
+// let ``next3Test`` =
+//     // Arrange // Act // Assert
+//     Assert.Equal(true, false)
 
-[<Theory>]
-[<MemberData("firstLessTestData")>]
-let ``firstLess`` =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+// [<Theory(Skip = "TODO")>]
+// [<MemberData("firstLessTestData")>]
+// let ``firstLess`` =
+//     // Arrange // Act // Assert
+//     Assert.Equal(true, false)
 
-[<Theory>]
-[<MemberData("mapConsTestData")>]
-let ``next2`` =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+// [<Theory(Skip = "TODO")>]
+// [<MemberData("mapConsTestData")>]
+// let ``next2Test`` =
+//     // Arrange // Act // Assert
+//     Assert.Equal(true, false)
 
 [<Theory>]
 [<MemberData("firstUpTestData")>]
-let ``firstUp`` =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+let ``firstUpTest`` (ps: 't list, expected: 't list) =
+    // Arrange // Act 
+    let result = firstUp ps
+    
+    // Assert
+    Assert.Equal<'t list>(result, expected)
 
-[<Theory>]
-[<MemberData("nextPermTestData")>]
-let ``nextPerm`` =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+// [<Theory(Skip = "TODO")>]
+// [<MemberData("nextPermTestData")>]
+// let ``nextPermTest`` =
+//     // Arrange // Act // Assert
+//     Assert.Equal(true, false)
+
+// [<Theory(Skip = "TODO")>]
+// [<MemberData("permuteTestData")>]
+// let ``permuteTest`` =
+//     // Arrange // Act // Assert
+//     Assert.Equal(true, false)
+
+let firstUpTestData : obj array seq =                                                            
+    seq {                                                                                         
+        yield [| 
+            ["A";"B";"C"];
+            ["B";"C"]
+        |]
+    }                                                                                             
