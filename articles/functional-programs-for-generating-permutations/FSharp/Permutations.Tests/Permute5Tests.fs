@@ -52,8 +52,6 @@ let ``firstUpTest`` (ps: 't list, expected: 't list) =
 
 let firstUpTestData : obj array seq =                                                            
     seq {                                                                                         
-        yield [| 
-            ["A";"B";"C"];
-            ["B";"C"]
-        |]
+        yield [| ["A";"B";"C"]; ["B";"C"] |]
+        yield [| ["B";"A";"C"]; ["C"] |]
     }                                                                                             

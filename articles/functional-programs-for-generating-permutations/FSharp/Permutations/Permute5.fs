@@ -2,7 +2,7 @@ module rec Permutations.Permute5
 
 open ListManipulation
 
-// Strip the head until we find a list that does not NOT start in lexographic order.
+// Strip the head until we find a list that starts in lexographic order.
 // Then return its tail.
 let firstUp ps  = 
     match ps with 
