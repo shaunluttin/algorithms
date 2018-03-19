@@ -71,7 +71,7 @@ type KPermuteLexographic () =
             |]
         })
 
-type RPermuteLexographic () =
+type RepeatedPermuteLexographic () =
     inherit ClassDataBase(seq
         {
             yield [|

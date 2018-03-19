@@ -6,7 +6,7 @@ The purpose of this ultimate goal is to become vaguely familiar with permutation
 # Refactors TODO:
 
 * Use xs for collections and x for scalar values.
-* Determine what to use for collection of collections [two dimensional lists.]
+* Rename the unit tests with `functionName_whenCondition_shouldExpectation` phrasing.
 
 # Other Goals (Maybe Someday)
 

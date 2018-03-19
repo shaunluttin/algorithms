@@ -41,8 +41,8 @@ let ``permuteTest`` (xs, expected: 't list list) =
     Assert.Equal<'t list list>(expected, actual)
 
 [<Theory>]
-[<ClassData(typeof<TestData.RPermuteLexographic>)>]
-let ``rpermuteTest`` (xs, expected: 't list list) =
+[<ClassData(typeof<TestData.RepeatedPermuteLexographic>)>]
+let ``repeatedPermuteTest`` (xs, expected: 't list list) =
     // Arrange // Act
     let actual = permute xs
 

@@ -4,8 +4,8 @@ open Xunit
 open Permutations.Permute1
 
 [<Theory>]
-[<MemberData("rpermuteTestValues")>]
-let ``rpermuteTest`` (x, expected: 't list list) = 
+[<MemberData("repeatedPermuteTestValues")>]
+let ``repeatedPermuteTest`` (x, expected: 't list list) = 
     // Arrange // Act                             
     let actual = permute x
                                                 
@@ -58,7 +58,7 @@ let ``putTest`` (a, p, q, expected) =
     Assert.Equal<'t>(expected, actual);    
 
 // Permutations with repeated elements.
-let rpermuteTestValues : obj array seq =                                                            
+let repeatedPermuteTestValues : obj array seq =                                                            
     seq {                                                                                         
         yield [| 
             ["A";"A";"B";"B"]; 
