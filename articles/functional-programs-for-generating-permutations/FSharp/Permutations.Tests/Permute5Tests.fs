@@ -56,8 +56,7 @@ let ``permuteTest`` () =
 let firstLessTestData : obj array seq =                                                            
     seq {                                                                                         
         yield [| ["A";"B";"C"]; "B"; ["A";"B";"C"] |]
-        // yield [| ["C";"A";"B"]; "B"; ["C";"A";"B"] |]
-        // yield [| ["A";"B";"C"]; "A"; ["B";"C"] |]
+        yield [| ["C";"B";"A"]; "B"; ["A"] |]
     }                                                                                             
 
 let firstUpTestData : obj array seq =                                                            
