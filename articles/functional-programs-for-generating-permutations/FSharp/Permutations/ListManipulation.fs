@@ -7,11 +7,11 @@ let rec removeFirst x xs =
     | head::tail -> head :: (removeFirst x tail)
 
 let rec put x j xs =
-    match j with 
+    match j with
     | 0 -> x::xs
     | _ -> xs.Head :: (put x (j-1) xs.Tail)
 
-let rec move i j (xs: 't list) : 't list = 
-    match i with 
+let rec move i j (xs: 't list) : 't list =
+    match i with
     | 1 -> put xs.Head (j-1) xs.Tail
     | _ -> xs.Head :: move (i-1) (j-1) xs.Tail

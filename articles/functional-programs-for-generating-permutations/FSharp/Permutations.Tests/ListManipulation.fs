@@ -7,7 +7,7 @@ open Permutations.ListManipulation
 [<MemberData("putTestData")>]
 let ``put`` (a, j, xs, expected: 't list) =
     // Arrange // Act
-    let actual = put a j xs 
+    let actual = put a j xs
 
     // Assert
     Assert.Equal<'t list>(expected, actual)
@@ -32,7 +32,7 @@ let ``removeFirst`` (x, xs, expected: List<int>) =
 
 // inserts x into xs at the j'th index.
 // [We assume that j must not exceed xs.Length.]
-let putTestData: obj array seq = 
+let putTestData: obj array seq =
     seq {
         yield [| "D"; 0; ["A";"B"]; ["D";"A";"B"] |]
         yield [| "D"; 1; ["A";"B"]; ["A";"D";"B"] |]
@@ -44,14 +44,14 @@ let putTestData: obj array seq =
 // [we assume that i and j start at one not zero.]
 // [We assume that i must be less than j is.]
 // [We assume that j must not exceed xs.Length.]
-let moveTestData : obj array seq = 
+let moveTestData : obj array seq =
     seq {
         yield [| 1; 2; ["A";"B";"C"]; ["B";"A";"C"] |]
         yield [| 1; 3; ["A";"B";"C"]; ["B";"C";"A";] |]
         yield [| 2; 3; ["A";"B";"C"]; ["A";"C";"B";] |]
     }
 
-let removeFirstTestData : obj array seq = 
+let removeFirstTestData : obj array seq =
     seq {
         // not in list
         yield [| 0; [1;2;3;4]; [1;2;3;4] |]

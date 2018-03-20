@@ -9,19 +9,19 @@ let sw = new System.Diagnostics.Stopwatch();
 
 sw.Restart();
 let permute1 = Permutations.Permute1.permute input
-let t1 = sw.ElapsedTicks; 
+let t1 = sw.ElapsedTicks;
 
 sw.Restart();
 let permute2 = Permutations.Permute2.permute input
-let t2 = sw.ElapsedTicks; 
+let t2 = sw.ElapsedTicks;
 
 sw.Restart();
 let permute3 = Permutations.Permute3.permute input
-let t3 = sw.ElapsedTicks; 
+let t3 = sw.ElapsedTicks;
 
 sw.Restart();
 let permute4 = Permutations.Permute4.permute input
-let t4 = sw.ElapsedTicks; 
+let t4 = sw.ElapsedTicks;
 
 // t1 143231L
 // t2 399989L

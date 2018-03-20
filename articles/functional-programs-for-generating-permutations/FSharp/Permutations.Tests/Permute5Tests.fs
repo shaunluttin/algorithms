@@ -6,26 +6,26 @@ open Permutations.Permute5
 [<Theory(Skip = "TODO")>]
 [<MemberData("genRevTestData")>]
 let ``genRevTest`` () =
-    // Arrange // Act 
-    
+    // Arrange // Act
+
     // Assert
     Assert.Equal(true, false)
 
 [<Theory>]
 [<MemberData("next3TestData")>]
 let ``next3Test`` (ps, qs, rs, expected: 't list) =
-    // Arrange // Act 
+    // Arrange // Act
     let actual = next3 ps qs rs
-    
+
     // Assert
     Assert.Equal<'t list>(expected, actual)
 
 [<Theory>]
 [<MemberData("firstLessTestData")>]
 let ``firstLessTest`` (ps: 't list, a: 't, expected: 't list) =
-    // Arrange // Act 
+    // Arrange // Act
     let actual = firstLess ps a
-    
+
     // Assert
     Assert.Equal<'t list>(expected, actual)
 
@@ -38,9 +38,9 @@ let ``next2Test`` () =
 [<Theory>]
 [<MemberData("firstUpTestData")>]
 let ``firstUpTest`` (ps: 't list, expected: 't list) =
-    // Arrange // Act 
+    // Arrange // Act
     let actual = firstUp ps
-    
+
     // Assert
     Assert.Equal<'t list>(expected, actual)
 
@@ -56,37 +56,37 @@ let ``permuteTest`` () =
     // Arrange // Act // Assert
     Assert.Equal(true, false)
 
-let next3TestData : obj array seq = 
+let next3TestData : obj array seq =
     seq {
-        yield [| 
-            ["A";"B";"C"]; 
-            ["A";"B";"C"]; 
-            ["B";"C"]; 
-            ["B";"A";"C"]; 
+        yield [|
+            ["A";"B";"C"];
+            ["A";"B";"C"];
+            ["B";"C"];
+            ["B";"A";"C"];
         |]
-        yield [| 
-            ["B";"A";"C"]; 
-            ["B";"A";"C"]; 
-            ["C"]; 
-            ["A";"C";"B"]; 
+        yield [|
+            ["B";"A";"C"];
+            ["B";"A";"C"];
+            ["C"];
+            ["A";"C";"B"];
         |]
-        yield [| 
+        yield [|
             ["H";"F";"E";"D";"G";"C";"A";"B"];
             ["F";"E";"D";"G";"C";"A";"B"];
-            ["G";"C";"A";"B"]; 
+            ["G";"C";"A";"B"];
             ["D";"E";"G";"H";"F";"C";"A";"B"];
         |]
     }
 
-let firstLessTestData : obj array seq =                                                            
-    seq {                                                                                         
+let firstLessTestData : obj array seq =
+    seq {
         yield [| ["A";"B";"C"]; "B"; ["A";"B";"C"] |]
         yield [| ["C";"B";"A"]; "B"; ["A"] |]
-    }                                                                                             
+    }
 
-let firstUpTestData : obj array seq =                                                            
-    seq {                                                                                         
+let firstUpTestData : obj array seq =
+    seq {
         yield [| ["A";"B";"C"]; ["B";"C"] |]
         yield [| ["B";"A";"C"]; ["C"] |]
         yield [| ["C";"B";"A"]; List.empty<string> |]
-    }                                                                                             
+    }

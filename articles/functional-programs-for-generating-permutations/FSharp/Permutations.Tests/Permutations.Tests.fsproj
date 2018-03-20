@@ -14,7 +14,7 @@
     <Compile Include="Permute3Tests.fs" />
     <Compile Include="Permute4Tests.fs" />
     <Compile Include="Permute5Tests.fs" />
-    <Compile Include="Program.fs" /> 
+    <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>

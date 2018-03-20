@@ -5,11 +5,11 @@ let rec put a ps qs =
     else ps.Head :: (put a ps.Tail qs)
 
 let rec insert a p (q: 't list) ps =
-    match q with 
-    | [] -> (put a p q) :: ps 
+    match q with
+    | [] -> (put a p q) :: ps
     // this pattern allows permutations with repeated elements
-    | _ when a = q.Head -> (put a p q) :: ps 
-    | _ -> (put a p q) :: (insert a p q.Tail ps) 
+    | _ when a = q.Head -> (put a p q) :: ps
+    | _ -> (put a p q) :: (insert a p q.Tail ps)
 
 let rec mapInsert a (ps: 't list list) =
     if ps.IsEmpty then []
@@ -26,17 +26,17 @@ let rec permute (xs: 't list) =
 // See https://www.statlect.com/mathematical-tools/k-permutations
 let rec kpermute k (xs: 't list) =
 
-    let rec mapInsert a ps qs = 
-        match ps with 
+    let rec mapInsert a ps qs =
+        match ps with
         | [] -> qs
-        | head::tail -> 
+        | head::tail ->
             let mapInsertNext = mapInsert a tail qs
             insert a head head mapInsertNext
 
-    match k with 
+    match k with
     | 0 -> [[]]
     | _ when xs.Length < k -> []
-    | _ -> 
+    | _ ->
         let permuteK = kpermute k
         let permuteKminus1 = kpermute (k-1)
-        mapInsert xs.Head (permuteKminus1 xs.Tail) (permuteK xs.Tail) 
+        mapInsert xs.Head (permuteKminus1 xs.Tail) (permuteK xs.Tail)
