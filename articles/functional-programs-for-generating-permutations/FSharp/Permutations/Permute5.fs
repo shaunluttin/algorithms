@@ -1,8 +1,7 @@
-module Permutations.Permute5
-
 // ps: the previous permutation
 // qs: the first sublist of ps whose head is less than the head of rs.
 // rs: the first sublist of ps whose head is greater than its predecessor's.
+module Permutations.Permute5
 
 // "find the first sublist r of p whose hd, a, is greater than its predecessor.
 // "If there is no such sublist, then the elements are in reverse order and we 
