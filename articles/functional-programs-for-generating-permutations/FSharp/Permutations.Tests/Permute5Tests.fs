@@ -51,14 +51,6 @@ let ``permuteTest`` () =
     // Arrange // Act // Assert
     Assert.Equal(true, false)
 
-let next2TestData : obj array seq = 
-    seq {
-        yield [|
-            ["A";"B";"C"];
-            ["B";"C"]; 
-            ["B";"A";"C"]; 
-        |]
-    }
 let next3TestData : obj array seq =
     seq {
         yield [|
@@ -84,7 +76,22 @@ let next3TestData : obj array seq =
 let firstLessTestData : obj array seq =
     seq {
         yield [| ["A";"B";"C"]; "B"; ["A";"B";"C"] |]
+        yield [| ["B";"A";"C"]; "C"; ["B";"A";"C"] |]
         yield [| ["C";"B";"A"]; "B"; ["A"] |]
+    }
+
+let next2TestData : obj array seq = 
+    seq {
+        yield [|
+            ["A";"B";"C"];
+            ["B";"C"]; 
+            ["B";"A";"C"]; 
+        |]
+        yield [|
+            ["B";"A";"C"]; 
+            ["C"]; 
+            ["A";"C";"B"];
+        |]
     }
 
 let firstUpTestData : obj array seq =
