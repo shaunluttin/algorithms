@@ -70,6 +70,12 @@ let next3TestData : obj array seq =
             ["C"]; 
             ["A";"C";"B"]; 
         |]
+        yield [| 
+            ["H";"F";"E";"D";"G";"C";"A";"B"];
+            ["F";"E";"D";"G";"C";"A";"B"];
+            ["G";"C";"A";"B"]; 
+            ["D";"E";"G";"H";"F";"C";"A";"B"];
+        |]
     }
 
 let firstLessTestData : obj array seq =                                                            
