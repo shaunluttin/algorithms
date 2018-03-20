@@ -92,11 +92,17 @@ let next2TestData : obj array seq =
             ["C"]; 
             ["A";"C";"B"];
         |]
+        yield [|
+            ["A";"C";"B"];
+            ["C";"B"];
+            ["C";"A";"B"];
+        |]
     }
 
 let firstUpTestData : obj array seq =
     seq {
         yield [| ["A";"B";"C"]; ["B";"C"] |]
         yield [| ["B";"A";"C"]; ["C"] |]
+        yield [| ["A";"C";"B"]; ["C";"B"] |]
         yield [| ["C";"B";"A"]; List.empty<string> |]
     }
