@@ -48,11 +48,14 @@ let ``nextPermTest`` (ps, expected: 't list) =
    // Assert
     Assert.Equal<'t list>(expected, actual)
 
-[<Theory(Skip = "TODO")>]
-[<MemberData("permuteTestData")>]
-let ``permuteTest`` () =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+[<Theory>]
+[<ClassData(typeof<TestData.PermuteReverseLexographic>)>]
+let ``permuteTest`` (ps, expected: 't list list) =
+    // Arrange // Act
+    let actual = permute5 (Some(ps))
+
+   // Assert
+    Assert.Equal<'t list list>(expected, actual)
 
 let next3TestData : obj array seq =
     seq {
