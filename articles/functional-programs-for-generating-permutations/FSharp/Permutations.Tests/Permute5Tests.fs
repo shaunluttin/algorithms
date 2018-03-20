@@ -11,11 +11,14 @@ let ``genRevTest`` () =
     // Assert
     Assert.Equal(true, false)
 
-[<Theory(Skip = "TODO")>]
+[<Theory>]
 [<MemberData("next3TestData")>]
-let ``next3Test`` () =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+let ``next3Test`` (ps, qs, rs, expected: 't list) =
+    // Arrange // Act 
+    let actual = next3 ps qs rs
+    
+    // Assert
+    Assert.Equal<'t list>(expected, actual)
 
 [<Theory>]
 [<MemberData("firstLessTestData")>]
@@ -52,6 +55,11 @@ let ``nextPermTest`` () =
 let ``permuteTest`` () =
     // Arrange // Act // Assert
     Assert.Equal(true, false)
+
+let next3TestData : obj array seq = 
+    seq {
+        yield [| ["A";"B";"C"]; ["A";"B";"C"]; ["B";"C"]; ["B";"A";"C"]; |]
+    }
 
 let firstLessTestData : obj array seq =                                                            
     seq {                                                                                         
