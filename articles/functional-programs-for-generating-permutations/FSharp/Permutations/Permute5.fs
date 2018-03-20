@@ -17,10 +17,10 @@ let rec firstUp ps  =
 
 // "find the first sublist q of p whose head is less than a..."
 // (Topor, 1982)
-let rec firstLess ps a = 
+let rec firstLess (ps: 't list) a = 
     match ps with 
-    | head::_ when head < a -> ps 
-    | _::tail -> firstLess tail a 
+    | _ when ps.Head < a -> ps 
+    | _ -> firstLess ps.Tail a 
     | _ -> failwith "Invalid argument"
 
 // "exchange the hd's of q and r,
