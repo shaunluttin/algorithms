@@ -39,11 +39,14 @@ let ``firstUpTest`` (ps: 't list, expected: 't list) =
     // Assert
     Assert.Equal<'t list>(expected, actual)
 
-[<Theory(Skip = "TODO")>]
+[<Theory>]
 [<MemberData("nextPermTestData")>]
-let ``nextPermTest`` () =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+let ``nextPermTest`` (ps, expected: 't list) =
+    // Arrange // Act
+    let actual = (nextPerm ps).Value
+
+   // Assert
+    Assert.Equal<'t list>(expected, actual)
 
 [<Theory(Skip = "TODO")>]
 [<MemberData("permuteTestData")>]
@@ -105,4 +108,16 @@ let firstUpTestData : obj array seq =
         yield [| ["B";"A";"C"]; ["C"] |]
         yield [| ["A";"C";"B"]; ["C";"B"] |]
         yield [| ["C";"B";"A"]; List.empty<string> |]
+    }
+
+let nextPermTestData : obj array seq = 
+    seq {
+        yield [| 
+            ["A";"B";"C"]; 
+            ["B";"A";"C"]; 
+        |]
+        yield [| 
+            ["A";"C";"B"]; 
+            ["C";"A";"B"]; 
+        |]
     }
