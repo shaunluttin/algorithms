@@ -3,14 +3,6 @@ module Permute5Tests
 open Xunit
 open Permutations.Permute5
 
-[<Theory(Skip = "TODO")>]
-[<MemberData("genRevTestData")>]
-let ``genRevTest`` () =
-    // Arrange // Act
-
-    // Assert
-    Assert.Equal(true, false)
-
 [<Theory>]
 [<MemberData("next3TestData")>]
 let ``next3Test`` (ps, qs, rs, expected: 't list) =
@@ -29,11 +21,14 @@ let ``firstLessTest`` (ps: 't list, a: 't, expected: 't list) =
     // Assert
     Assert.Equal<'t list>(expected, actual)
 
-[<Theory(Skip = "TODO")>]
-[<MemberData("mapConsTestData")>]
-let ``next2Test`` () =
-    // Arrange // Act // Assert
-    Assert.Equal(true, false)
+[<Theory>]
+[<MemberData("next2TestData")>]
+let ``next2Test`` (ps, rs, expected: 't list) =
+    // Arrange // Act
+    let actual = (next2 ps rs).Value
+
+    // Assert
+    Assert.Equal<'t list>(expected, actual)
 
 [<Theory>]
 [<MemberData("firstUpTestData")>]
@@ -56,6 +51,14 @@ let ``permuteTest`` () =
     // Arrange // Act // Assert
     Assert.Equal(true, false)
 
+let next2TestData : obj array seq = 
+    seq {
+        yield [|
+            ["A";"B";"C"];
+            ["B";"C"]; 
+            ["B";"A";"C"]; 
+        |]
+    }
 let next3TestData : obj array seq =
     seq {
         yield [|
