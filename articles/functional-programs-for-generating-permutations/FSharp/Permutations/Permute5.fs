@@ -4,52 +4,45 @@
 // a:  the head of rs
 module Permutations.Permute5
 
-// 4. "...exchange the hd's of q and r,and reverse the elements of p up to but excluding q"
-// (Topor, 1982)
-let next3 ps qs rs =
+    let next3 ps qs rs =
 
-    let rec genRev (ps: 't list) qs rs ss =
+        let rec genRev (ps: 't list) qs rs ss =
+            match ps with
+            | _ when ps = rs -> ss
+            | _ when ps = qs -> genRev ps.Tail qs rs (rs.Head::ss)
+            | _ -> genRev ps.Tail qs rs (ps.Head::ss)
+
+        genRev ps qs rs (qs.Head::rs.Tail)
+
+    let rec firstLess (ps: 't list) a =
         match ps with
-        | _ when ps = rs -> ss
-        | _ when ps = qs -> genRev ps.Tail qs rs (rs.Head::ss)
-        | _ -> genRev ps.Tail qs rs (ps.Head::ss)
+        | _ when ps.Head < a -> ps
+        | _ -> firstLess ps.Tail a
 
-    genRev ps qs rs (qs.Head::rs.Tail)
+    let next2 ps rs = 
+        match rs with 
+        | [] -> None
+        | _ -> 
+            let qs = firstLess ps rs.Head
+            let permutation = next3 ps qs rs
+            Some (permutation)
 
-// 3. "...find the first sublist q of p whose head is less than a" (Topor, 1982)
-let rec firstLess (ps: 't list) a =
-    match ps with
-    | _ when ps.Head < a -> ps
-    | _ -> firstLess ps.Tail a
+    let rec firstUp ps  =
+        match ps with
+        | [ _ ] -> []
+        | psHead::psTail when psHead < psTail.Head -> psTail
+        | _ -> firstUp ps.Tail
 
-// 2. "If there is no such sublist, then the elements are in reverse order and we
-// return NONE since there is no successor." (Topor, 1982)
-let next2 ps rs = 
-    match rs with 
-    | [] -> None
-    | _ -> 
-        let qs = firstLess ps rs.Head
-        let permutation = next3 ps qs rs
-        Some (permutation)
+    let nextPerm ps =  
+        match ps with 
+        | [] -> None
+        | _ -> 
+            let rs = firstUp ps 
+            next2 ps rs 
 
-// 1. "...find the first sublist r of p whose hd, a, is greater than its predecessor." 
-// (Topor, 1982)
-let rec firstUp ps  =
-    match ps with
-    | [ _ ] -> []
-    | psHead::psTail when psHead < psTail.Head -> psTail
-    | _ -> firstUp ps.Tail
-
-let nextPerm ps =  
-    match ps with 
-    | [] -> None
-    | _ -> 
-        let rs = firstUp ps 
-        next2 ps rs 
-
-let rec permute ps =
-    match ps with 
-    | None -> []
-    | Some prev ->
-        let ns = nextPerm prev
-        prev::(permute ns)
+    let rec permute ps =
+        match ps with 
+        | None -> []
+        | Some prev ->
+            let ns = nextPerm prev
+            prev::(permute ns)
