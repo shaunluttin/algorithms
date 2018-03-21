@@ -21,7 +21,6 @@ let rec firstLess (ps: 't list) a =
     match ps with
     | _ when ps.Head < a -> ps
     | _ -> firstLess ps.Tail a
-    | _ -> failwith "Invalid argument"
 
 // 2. "If there is no such sublist, then the elements are in reverse order and we
 // return NONE since there is no successor." (Topor, 1982)
@@ -38,9 +37,8 @@ let next2 ps rs =
 let rec firstUp ps  =
     match ps with
     | [ _ ] -> []
-    | head::tail when head < tail.Head -> tail
-    | _::tail -> firstUp tail
-    | _ -> failwith "Invalid argument"
+    | psHead::psTail when psHead < psTail.Head -> psTail
+    | _ -> firstUp ps.Tail
 
 let nextPerm ps =  
     match ps with 
@@ -52,6 +50,6 @@ let nextPerm ps =
 let rec permute ps =
     match ps with 
     | None -> []
-    | _ -> 
-        let ns = nextPerm ps.Value 
-        ps.Value::(permute ns)
+    | Some prev ->
+        let ns = nextPerm prev
+        prev::(permute ns)
