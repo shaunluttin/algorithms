@@ -49,9 +49,9 @@ let nextPerm ps =
         let rs = firstUp ps 
         next2 ps rs 
 
-let rec permute5 ps =
+let rec permute ps =
     match ps with 
     | None -> []
     | _ -> 
         let ns = nextPerm ps.Value 
-        ps.Value::(permute5 ns)
+        ps.Value::(permute ns)

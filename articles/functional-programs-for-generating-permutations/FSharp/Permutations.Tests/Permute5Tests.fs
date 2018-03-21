@@ -52,7 +52,7 @@ let ``nextPermTest`` (ps, expected: 't list option) =
 [<ClassData(typeof<TestData.PermuteReverseLexographic>)>]
 let ``permuteTest`` (ps, expected: 't list list) =
     // Arrange // Act
-    let actual = permute5 (Some(ps))
+    let actual = permute (Some(ps))
 
    // Assert
     Assert.Equal<'t list list>(expected, actual)
