@@ -91,7 +91,7 @@ let next2TestData : obj array seq =
         yield [| ["A"]; List.empty<string>; None |]
         // 
         yield [|
-            ["A";"B";"C"]; // first permutation
+            ["A";"B";"C"]; // first
             ["B";"C"]; 
             Some(["B";"A";"C"]); 
         |]
@@ -101,15 +101,14 @@ let next2TestData : obj array seq =
             Some(["A";"C";"B"]);
         |]
         yield [|
-            ["A";"C";"B"]; // third
-            ["C";"B"];
-            Some(["C";"A";"B"]);
-        |]
-        // ... 
-        yield [|
-            ["B";"C";"A"]; // last
+            ["B";"C";"A"]; // fifth
             ["C";"A"]; 
             Some(["C";"B";"A"]); 
+        |]
+        yield [|
+            ["C";"B";"A"]; // sixth
+            List.empty<string>
+            None
         |]
     }
 
@@ -117,17 +116,20 @@ let firstUpTestData : obj array seq =
     seq {
         yield [| ["A"]; List.empty<string> |] 
         // 
-        yield [| ["A";"B";"C"]; ["B";"C"] |] // first permutation
+        yield [| ["A";"B";"C"]; ["B";"C"] |] // first
         yield [| ["B";"A";"C"]; ["C"] |] // second
         yield [| ["A";"C";"B"]; ["C";"B"] |] // third
-        // ...
-        yield [| ["B";"C";"A"]; ["C";"A"] |] // second to last
-        yield [| ["C";"B";"A"]; List.empty<string> |] // last
+        yield [| ["C";"A";"B"]; ["B"] |] // fourth
+        yield [| ["B";"C";"A"]; ["C";"A"] |] // fifth
+        yield [| ["C";"B";"A"]; List.empty<string> |] // sixth
     }
 
 let nextPermTestData : obj array seq = 
     seq {
         yield [| ["A"]; None |]
+        // 
+        yield [| ["A";"B"]; Some(["B";"A"]) |]
+        yield [| ["B";"A"]; None |]
         // 
         yield [| ["A";"B";"C"]; Some(["B";"A";"C"]) |] // first
         yield [| ["B";"A";"C"]; Some(["A";"C";"B"]) |] // second
