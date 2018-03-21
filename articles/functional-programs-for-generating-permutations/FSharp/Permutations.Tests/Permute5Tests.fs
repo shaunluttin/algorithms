@@ -48,7 +48,7 @@ let ``nextPermTest`` (ps, expected: 't list option) =
    // Assert
     Assert.Equal<'t list option>(expected, actual)
 
-[<Theory(Skip = "Failing")>]
+[<Theory>]
 [<ClassData(typeof<TestData.PermuteReverseLexographic>)>]
 let ``permuteTest`` (ps, expected: 't list list) =
     // Arrange // Act

@@ -42,7 +42,7 @@ let rec firstUp ps  =
     | _::tail -> firstUp tail
     | _ -> failwith "Invalid argument"
 
-let nextPerm ps =  // ["B";"C";"A"]
+let nextPerm ps =  
     match ps with 
     | [] -> None
     | _ -> 
@@ -54,6 +54,4 @@ let rec permute5 ps =
     | None -> []
     | _ -> 
         let ns = nextPerm ps.Value 
-        match ns with 
-        | None -> []
-        | _ -> ps.Value::(permute5 ns)
+        ps.Value::(permute5 ns)
