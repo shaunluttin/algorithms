@@ -9,3 +9,4 @@ list |> PSeq.reduce(*)
 
 list |> Seq.reduce(+)
 list |> PSeq.reduce(+)
+
