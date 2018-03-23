@@ -3,6 +3,7 @@
 // nuget install FSharp.Collections.ParallelSeq
 #r "./FSharp.Collections.ParallelSeq.1.1.0/lib/netstandard2.0/FSharp.Collections.ParallelSeq.dll"
 open FSharp.Collections.ParallelSeq
+open System.Collections.ObjectModel
 
 let put a q xs =
     ([], xs)
@@ -12,12 +13,7 @@ let put a q xs =
         |> List.rev
 
 let putAtEach a xs =
-    ([a::xs], xs)
-        ||> Seq.fold (fun acc x ->
-            (put a x xs)::acc)
+    let result = ([a::xs], xs) ||> Seq.fold (fun acc x -> (put a x xs)::acc)
+    new ObservableCollection<'t>(result)
 
-let rec permute (xs:'t list) = 
-    if xs.Length = 1 then [xs]
-    else permute xs.Tail |> Seq.fold (fun acc ps -> (putAtEach xs.Head ps)@acc) []
-
-permute ["A";"B";"C"] |> ignore
+putAtEach 0 [1] |> Observable.scan(fun acc item -> acc)
