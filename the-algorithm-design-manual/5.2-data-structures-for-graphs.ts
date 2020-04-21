@@ -15,13 +15,29 @@ type Graph = {
 const initializeGraph = () => {};
 
 const readGraph = (): Graph => {
-  return undefined;
+  return {
+    edges: [],
+    degree: 0,
+    nvertices: 1,
+    nedges: 0,
+    directed: false,
+  };
 };
 
 const insertEdge = () => {};
 
 const printGraph = (g: Graph) => {
-  console.log("foo");
+  for (let i = 1; i <= g.nvertices; i++) {
+    // print the vertex
+    console.log(`${i}:`);
+    // print the vertex's edges
+    let nextAdjascentEdge = g.edges[i];
+    while (nextAdjascentEdge) {
+      console.log(nextAdjascentEdge.y);
+      nextAdjascentEdge = nextAdjascentEdge.next;
+    }
+    console.log("---");
+  }
 };
 
 // ./node_modules/.bin/ts-node 5.2-data-structures-for-graphs.ts
