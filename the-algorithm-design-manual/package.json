@@ -1,0 +1,10 @@
+{
+  "name": "the-algorithm-design-manual",
+  "description": "JavaScript/TypeScript implementations of algorithms in The Algorithm Design Manual.",
+  "author": "Shaun Luttin",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^8.9.0",
+    "typescript": "^3.8.3"
+  }
+}
