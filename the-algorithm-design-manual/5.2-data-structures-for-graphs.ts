@@ -1,45 +1,84 @@
+import fs from "fs";
+import os from "os";
+
 type EdgeNode = {
   y: number;
-  weight: number;
   next: EdgeNode;
+  weight?: number;
 };
 
 type Graph = {
   edges: EdgeNode[];
-  degree: number;
+  degree: number[];
   nvertices: number;
   nedges: number;
   directed: boolean;
 };
 
-const initializeGraph = () => {};
+const initializeGraph = (): Graph => ({
+  edges: [],
+  degree: [],
+  nvertices: 0,
+  nedges: 0,
+  directed: false,
+});
 
-const readGraph = (): Graph => {
+/**
+ * [The] graph format consists of an initial line featuring the number of vertices and
+ * edges in the graph, followed by a listing of the edges at one vertex pair per line.
+ */
+const readGraph = (relativePath: string): Graph => {
+  const [[nvertices, nedges], ...graphEdgeData] = fs
+    .readFileSync(relativePath, {
+      encoding: "utf8",
+    })
+    .split(os.EOL)
+    .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
+
+  const graph = initializeGraph();
+
+  for (const [x, y] of graphEdgeData) {
+    insertEdge(graph, [x, y]);
+  }
+
   return {
-    edges: [],
-    degree: 0,
-    nvertices: 1,
-    nedges: 0,
-    directed: false,
+    ...graph,
+    nvertices,
+    nedges,
   };
 };
 
-const insertEdge = () => {};
+/**
+ * [mutation] Insert an edge that starts at `x` and goes to `y`.
+ */
+const insertEdge = (g: Graph, [x, y]: [number, number], directed = false) => {
+  /**
+   * Insert this edge at the head of the linked list of edges that start at `x`.
+   */
+  g.edges[x] = {
+    y,
+    next: g.edges[x],
+  };
+
+  g.degree[x]++;
+};
 
 const printGraph = (g: Graph) => {
-  for (let i = 1; i <= g.nvertices; i++) {
-    // print the vertex
-    console.log(`${i}:`);
-    // print the vertex's edges
-    let nextAdjascentEdge = g.edges[i];
+  console.log("printGraph:");
+
+  for (let vertex = 1; vertex <= g.nvertices; vertex++) {
+    const adjacentEdges = [];
+
+    let nextAdjascentEdge = g.edges[vertex];
     while (nextAdjascentEdge) {
-      console.log(nextAdjascentEdge.y);
+      adjacentEdges.push(nextAdjascentEdge.y);
       nextAdjascentEdge = nextAdjascentEdge.next;
     }
-    console.log("---");
+
+    console.log(`${vertex}: ${adjacentEdges.join(",")}`);
   }
 };
 
-// ./node_modules/.bin/ts-node 5.2-data-structures-for-graphs.ts
-const graph = readGraph();
+// npm run tsnode 5.2-data-structures-for-graphs.ts
+const graph = readGraph("./5.2-data-structures-for-graphs.txt");
 printGraph(graph);

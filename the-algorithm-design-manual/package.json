@@ -3,7 +3,12 @@
   "description": "JavaScript/TypeScript implementations of algorithms in The Algorithm Design Manual.",
   "author": "Shaun Luttin",
   "license": "ISC",
+  "scripts": {
+    "tsnode": "ts-node",
+    "tsc": "tsc"
+  },
   "devDependencies": {
+    "@types/node": "^13.13.2",
     "ts-node": "^8.9.0",
     "typescript": "^3.8.3"
   }
