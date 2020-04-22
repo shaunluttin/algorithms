@@ -63,8 +63,8 @@ const insertEdge = (g: Graph, [x, y]: [number, number], directed = false) => {
   g.degree[x]++;
 };
 
-const printGraph = (g: Graph) => {
-  console.log("printGraph:");
+const printGraph = (g: Graph): string => {
+  let printGraph = "";
 
   for (let vertex = 1; vertex <= g.nvertices; vertex++) {
     const adjacentEdges = [];
@@ -75,10 +75,14 @@ const printGraph = (g: Graph) => {
       nextAdjascentEdge = nextAdjascentEdge.next;
     }
 
-    console.log(`${vertex}: ${adjacentEdges.join(",")}`);
+    printGraph += `${vertex}: ${adjacentEdges.join(",")} ${os.EOL}`;
   }
+
+  return printGraph;
 };
 
 // npm run tsnode 5.2-data-structures-for-graphs.ts
 const graph = readGraph("./5.2-data-structures-for-graphs.txt");
-printGraph(graph);
+const graphString = printGraph(graph);
+
+console.log(`Here is the graph: ${os.EOL}${graphString}`);
