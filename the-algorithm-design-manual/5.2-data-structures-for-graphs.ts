@@ -82,7 +82,7 @@ const printGraph = (g: Graph): string => {
 };
 
 // npm run tsnode 5.2-data-structures-for-graphs.ts
-const graph = readGraph("./5.2-data-structures-for-graphs.txt");
+const graph = readGraph("./figure-5.4.txt");
 const graphString = printGraph(graph);
 
 console.log(`Here is the graph: ${os.EOL}${graphString}`);
