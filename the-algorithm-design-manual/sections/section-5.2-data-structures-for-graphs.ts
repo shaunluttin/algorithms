@@ -1,13 +1,13 @@
 import fs from "fs";
 import os from "os";
 
-type EdgeNode = {
+export type EdgeNode = {
   y: number;
   next: EdgeNode;
   weight?: number;
 };
 
-type Graph = {
+export type Graph = {
   edges: EdgeNode[];
   degree: number[];
   nvertices: number;
@@ -24,10 +24,29 @@ const initializeGraph = (): Graph => ({
 });
 
 /**
+ * [mutation] Insert an edge that starts at `x` and goes to `y`.
+ */
+const insertEdge = (g: Graph, [x, y]: [number, number], directed = false) => {
+  /**
+   * Insert this edge at the head of the linked list of edges that start at `x`.
+   */
+  g.edges[x] = {
+    y,
+    next: g.edges[x],
+  };
+
+  if (!directed) {
+    insertEdge(g, [y, x], true);
+  } else {
+    g.degree[x]++;
+  }
+};
+
+/**
  * [The] graph format consists of an initial line featuring the number of vertices and
  * edges in the graph, followed by a listing of the edges at one vertex pair per line.
  */
-const readGraph = (relativePath: string): Graph => {
+export const readGraph = (relativePath: string): Graph => {
   const [[nvertices, nedges], ...graphEdgeData] = fs
     .readFileSync(relativePath, {
       encoding: "utf8",
@@ -35,49 +54,26 @@ const readGraph = (relativePath: string): Graph => {
     .split(os.EOL)
     .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
 
-  const graph = initializeGraph();
+  const g = initializeGraph();
 
   for (const [x, y] of graphEdgeData) {
-    insertEdge(graph, [x, y]);
+    insertEdge(g, [x, y]);
   }
 
   return {
-    ...graph,
+    ...g,
     nvertices,
     nedges,
   };
 };
 
-/**
- * [mutation] Insert an edge that starts at `x` and goes to `y`.
- */
-const insertEdge = (
-  graph: Graph,
-  [x, y]: [number, number],
-  directed = false
-) => {
-  /**
-   * Insert this edge at the head of the linked list of edges that start at `x`.
-   */
-  graph.edges[x] = {
-    y,
-    next: graph.edges[x],
-  };
-
-  if (!directed) {
-    insertEdge(graph, [y, x], true);
-  } else {
-    graph.degree[x]++;
-  }
-};
-
-const printGraph = (graph: Graph): string => {
+const printGraph = (g: Graph): string => {
   let printGraph = "";
 
-  for (let vertex = 1; vertex <= graph.nvertices; vertex++) {
+  for (let vertex = 1; vertex <= g.nvertices; vertex++) {
     const adjacentEdges = [];
 
-    let nextAdjascentEdge = graph.edges[vertex];
+    let nextAdjascentEdge = g.edges[vertex];
     while (nextAdjascentEdge) {
       adjacentEdges.push(nextAdjascentEdge.y);
       nextAdjascentEdge = nextAdjascentEdge.next;
@@ -90,7 +86,7 @@ const printGraph = (graph: Graph): string => {
 };
 
 // npm run tsnode 5.2-data-structures-for-graphs.ts
-const graph = readGraph("./figure-5.4.txt");
+const graph = readGraph("../figures/figure-5.4.txt");
 const graphString = printGraph(graph);
 
 console.log(`Here is the graph: ${os.EOL}${graphString}`);
