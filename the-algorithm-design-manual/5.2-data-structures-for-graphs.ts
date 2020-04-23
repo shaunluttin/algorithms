@@ -51,25 +51,33 @@ const readGraph = (relativePath: string): Graph => {
 /**
  * [mutation] Insert an edge that starts at `x` and goes to `y`.
  */
-const insertEdge = (g: Graph, [x, y]: [number, number], directed = false) => {
+const insertEdge = (
+  graph: Graph,
+  [x, y]: [number, number],
+  directed = false
+) => {
   /**
    * Insert this edge at the head of the linked list of edges that start at `x`.
    */
-  g.edges[x] = {
+  graph.edges[x] = {
     y,
-    next: g.edges[x],
+    next: graph.edges[x],
   };
 
-  g.degree[x]++;
+  if (!directed) {
+    insertEdge(graph, [y, x], true);
+  } else {
+    graph.degree[x]++;
+  }
 };
 
-const printGraph = (g: Graph): string => {
+const printGraph = (graph: Graph): string => {
   let printGraph = "";
 
-  for (let vertex = 1; vertex <= g.nvertices; vertex++) {
+  for (let vertex = 1; vertex <= graph.nvertices; vertex++) {
     const adjacentEdges = [];
 
-    let nextAdjascentEdge = g.edges[vertex];
+    let nextAdjascentEdge = graph.edges[vertex];
     while (nextAdjascentEdge) {
       adjacentEdges.push(nextAdjascentEdge.y);
       nextAdjascentEdge = nextAdjascentEdge.next;
