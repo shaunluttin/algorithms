@@ -1,5 +1,5 @@
-# Undirected Graph: each edge will be inserted twice.
-5 14
+# Undirected Graph: each edge will be inserted twice but only counted once.
+5 7
 1 2
 1 5
 2 3

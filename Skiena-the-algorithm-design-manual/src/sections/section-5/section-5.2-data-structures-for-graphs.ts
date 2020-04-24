@@ -7,16 +7,12 @@ import { Graph } from "./Graph";
  * Since we are numbering our edges starting at `1`, the `edges` and `degree`
  * arrays will always have `0` and `null` at index `0` respectively.
  */
-const initializeGraph = (
-  nvertices: number,
-  nedges: number,
-  directed = false
-): Graph => ({
-  edges: new Array(nvertices + 1).fill(null),
-  degree: new Array(nvertices + 1).fill(0),
-  nedges,
+const initializeGraph = (nvertices: number, directed = false): Graph => ({
   nvertices,
   directed,
+  edges: new Array(nvertices + 1).fill(null),
+  degree: new Array(nvertices + 1).fill(0),
+  nedges: 0,
 });
 
 /**
@@ -35,10 +31,21 @@ const insertEdge = (
     next: g.edges[x],
   };
 
+  /**
+   * Count this edge in the degree of `x`.
+   */
+  g.degree[x]++;
+
   if (!directed) {
+    /**
+     * If it is an undirected graph then insert this edge's complement.
+     */
     insertEdge(g, [y, x], true);
   } else {
-    g.degree[x]++;
+    /**
+     * If this is a directed graph, then count the edge.
+     */
+    g.nedges++;
   }
 };
 
@@ -47,12 +54,12 @@ const insertEdge = (
  * edges in the graph, followed by a listing of the edges at one vertex pair per line.
  */
 export const readGraph = (graphString: string): Graph => {
-  const [[nvertices, nedges], ...graphEdgeData] = graphString
+  const [[nvertices], ...graphEdgeData] = graphString
     .split(os.EOL)
     .filter((line) => !line.startsWith("#"))
     .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
 
-  const g = initializeGraph(nvertices, nedges);
+  const g = initializeGraph(nvertices);
 
   for (const [x, y] of graphEdgeData) {
     insertEdge(g, [x, y]);
