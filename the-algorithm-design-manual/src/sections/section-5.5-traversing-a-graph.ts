@@ -1,3 +1,4 @@
+import getFigure54 from "../figures/getFigure54";
 import { Graph, readGraph } from "./section-5.2-data-structures-for-graphs";
 import {
   dequeue,
@@ -54,7 +55,7 @@ const bfs = (g: Graph, start: number): void => {
   }
 };
 
-const graph = readGraph("../figures/figure-5.4.txt");
+const graph = readGraph(getFigure54());
 
 initializeSearch(graph);
 

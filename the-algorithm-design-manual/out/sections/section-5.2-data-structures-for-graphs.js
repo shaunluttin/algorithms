@@ -7,23 +7,23 @@ var __assign =
       function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i];
-          for (var p in s)
+          for (const p in s)
             if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
         return t;
       };
     return __assign.apply(this, arguments);
   };
-var __importDefault =
+const __importDefault =
   (this && this.__importDefault) ||
   function (mod) {
     return mod && mod.__esModule ? mod : { default: mod };
   };
 Object.defineProperty(exports, "__esModule", { value: true });
-var fs_1 = __importDefault(require("fs"));
-var os_1 = __importDefault(require("os"));
-var path_1 = __importDefault(require("path"));
-var initializeGraph = function () {
+const fs_1 = __importDefault(require("fs"));
+const os_1 = __importDefault(require("os"));
+const path_1 = __importDefault(require("path"));
+const initializeGraph = function () {
   return {
     edges: [],
     degree: [],
@@ -36,7 +36,7 @@ var initializeGraph = function () {
  * [mutation] Insert an edge that starts at `x` and goes to `y`.
  */
 var insertEdge = function (g, _a, directed) {
-  var x = _a[0],
+  const x = _a[0],
     y = _a[1];
   if (directed === void 0) {
     directed = false;
@@ -59,7 +59,7 @@ var insertEdge = function (g, _a, directed) {
  * edges in the graph, followed by a listing of the edges at one vertex pair per line.
  */
 exports.readGraph = function (relativePath) {
-  var _a = fs_1.default
+  const _a = fs_1.default
       .readFileSync(relativePath, {
         encoding: "utf8",
       })
@@ -73,24 +73,24 @@ exports.readGraph = function (relativePath) {
     nvertices = _b[0],
     nedges = _b[1],
     graphEdgeData = _a.slice(1);
-  var g = initializeGraph();
+  const g = initializeGraph();
   for (
-    var _i = 0, graphEdgeData_1 = graphEdgeData;
+    let _i = 0, graphEdgeData_1 = graphEdgeData;
     _i < graphEdgeData_1.length;
     _i++
   ) {
-    var _c = graphEdgeData_1[_i],
+    const _c = graphEdgeData_1[_i],
       x = _c[0],
       y = _c[1];
     insertEdge(g, [x, y]);
   }
   return __assign(__assign({}, g), { nvertices: nvertices, nedges: nedges });
 };
-var printGraph = function (g) {
-  var printGraph = "";
-  for (var vertex = 1; vertex <= g.nvertices; vertex++) {
-    var adjacentEdges = [];
-    var nextAdjascentEdge = g.edges[vertex];
+const printGraph = function (g) {
+  let printGraph = "";
+  for (let vertex = 1; vertex <= g.nvertices; vertex++) {
+    const adjacentEdges = [];
+    let nextAdjascentEdge = g.edges[vertex];
     while (nextAdjascentEdge) {
       adjacentEdges.push(nextAdjascentEdge.y);
       nextAdjascentEdge = nextAdjascentEdge.next;
@@ -101,8 +101,8 @@ var printGraph = function (g) {
   return printGraph;
 };
 // npm run tsnode 5.2-data-structures-for-graphs.ts
-var graph = exports.readGraph(
+const graph = exports.readGraph(
   path_1.default.join(__dirname, "../figures/figure-5.4.txt")
 );
-var graphString = printGraph(graph);
+const graphString = printGraph(graph);
 console.log("Here is the graph: " + os_1.default.EOL + graphString);

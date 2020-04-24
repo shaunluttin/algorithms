@@ -1,6 +1,5 @@
-import fs from "fs";
 import os from "os";
-import path from "path";
+import getFigure54 from "../figures/getFigure54";
 
 export type EdgeNode = {
   y: number;
@@ -51,11 +50,8 @@ const insertEdge = (
  * [The] graph format consists of an initial line featuring the number of vertices and
  * edges in the graph, followed by a listing of the edges at one vertex pair per line.
  */
-export const readGraph = (relativePath: string): Graph => {
-  const [[nvertices, nedges], ...graphEdgeData] = fs
-    .readFileSync(relativePath, {
-      encoding: "utf8",
-    })
+export const readGraph = (graphData: string): Graph => {
+  const [[nvertices, nedges], ...graphEdgeData] = graphData
     .split(os.EOL)
     .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
 
@@ -91,7 +87,7 @@ const printGraph = (g: Graph): string => {
 };
 
 // npm run tsnode 5.2-data-structures-for-graphs.ts
-const graph = readGraph(path.join(__dirname, "../figures/figure-5.4.txt"));
+const graph = readGraph(getFigure54());
 const graphString = printGraph(graph);
 
 console.log(`Here is the graph: ${os.EOL}${graphString}`);

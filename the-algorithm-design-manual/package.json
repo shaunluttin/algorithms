@@ -4,7 +4,7 @@
   "author": "Shaun Luttin",
   "license": "ISC",
   "scripts": {
-    "tsnode": "ts-node",
+    "ts-node": "ts-node",
     "build:copy": "copyfiles ./src/figures/* out --up 1",
     "build:prettier": "prettier --write out/",
     "build": "tsc && npm run build:copy && npm run build:prettier"
