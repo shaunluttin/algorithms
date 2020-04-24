@@ -1,19 +1,6 @@
 import os from "os";
-import getFigure from "../figures/getFigure";
-
-export type EdgeNode = {
-  y: number;
-  next: EdgeNode;
-  weight?: number;
-};
-
-export type Graph = {
-  edges: EdgeNode[];
-  degree: number[];
-  nvertices: number;
-  nedges: number;
-  directed: boolean;
-};
+import getFigure from "../../figures/getFigure";
+import { Graph } from "./Graph";
 
 const initializeGraph = (): Graph => ({
   edges: [],
@@ -53,6 +40,7 @@ const insertEdge = (
 export const readGraph = (graphData: string): Graph => {
   const [[nvertices, nedges], ...graphEdgeData] = graphData
     .split(os.EOL)
+    .filter((line) => !line.startsWith("#"))
     .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
 
   const g = initializeGraph();
@@ -87,7 +75,7 @@ const printGraph = (g: Graph): string => {
 };
 
 // npm run tsnode 5.2-data-structures-for-graphs.ts
-const graph = readGraph(getFigure(5.4));
+const graph = readGraph(getFigure("5.4"));
 const graphString = printGraph(graph);
 
 console.log(`Here is the graph: ${os.EOL}${graphString}`);

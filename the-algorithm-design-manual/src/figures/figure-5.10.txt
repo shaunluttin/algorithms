@@ -1,9 +1,9 @@
 # Undirected Graph: each edge will be inserted twice.
-5 14
+6 16
 1 2
 1 5
-2 3
-2 4
+1 6
 2 5
+2 3
 3 4
-4 5 
+4 5
