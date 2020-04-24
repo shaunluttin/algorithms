@@ -1,5 +1,5 @@
 # Undirected Graph: each edge will be inserted twice.
-6 16
+6 14
 1 2
 1 5
 1 6

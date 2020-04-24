@@ -1,12 +1,18 @@
 import os from "os";
 import { Graph } from "./Graph";
 
-const initializeGraph = (): Graph => ({
+/**
+ * Create a new graph with empty arrays and zero values.
+ *
+ * Since we are numbering our edges starting at `1`, the `edges` and `degree`
+ * arrays will always have `null` at index `0`.
+ */
+const initializeGraph = (directed = false): Graph => ({
   edges: [],
   degree: [],
   nvertices: 0,
   nedges: 0,
-  directed: false,
+  directed,
 });
 
 /**
