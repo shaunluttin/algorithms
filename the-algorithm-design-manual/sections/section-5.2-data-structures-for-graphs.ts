@@ -26,7 +26,11 @@ const initializeGraph = (): Graph => ({
 /**
  * [mutation] Insert an edge that starts at `x` and goes to `y`.
  */
-const insertEdge = (g: Graph, [x, y]: [number, number], directed = false) => {
+const insertEdge = (
+  g: Graph,
+  [x, y]: [number, number],
+  directed = false
+): void => {
   /**
    * Insert this edge at the head of the linked list of edges that start at `x`.
    */

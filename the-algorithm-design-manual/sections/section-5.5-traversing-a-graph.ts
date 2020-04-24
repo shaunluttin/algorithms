@@ -13,14 +13,14 @@ const discovered: boolean[] = [];
 const processed: boolean[] = [];
 const parent: number[] = [];
 
-const initializeSearch = (graph: Graph) => {
+const initializeSearch = (graph: Graph): void => {
   for (let i = 1; i <= graph.nvertices; i++) {
     processed[i] = discovered[i] = false;
     parent[i] = -1;
   }
 };
 
-const bfs = (g: Graph, start: number) => {
+const bfs = (g: Graph, start: number): void => {
   let q: unknown;
   let v: number;
   let y: number;
