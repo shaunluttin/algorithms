@@ -42,8 +42,8 @@ const insertEdge = (
  * [The] graph format consists of an initial line featuring the number of vertices and
  * edges in the graph, followed by a listing of the edges at one vertex pair per line.
  */
-export const readGraph = (graphData: string): Graph => {
-  const [[nvertices, nedges], ...graphEdgeData] = graphData
+export const readGraph = (graphString: string): Graph => {
+  const [[nvertices, nedges], ...graphEdgeData] = graphString
     .split(os.EOL)
     .filter((line) => !line.startsWith("#"))
     .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
