@@ -5,12 +5,15 @@
   "license": "ISC",
   "scripts": {
     "tsnode": "ts-node",
-    "tsc": "tsc"
+    "build:copy": "copyfiles ./src/figures/* out --up 1",
+    "build:prettier": "prettier --write out/",
+    "build": "tsc && npm run build:copy && npm run build:prettier"
   },
   "devDependencies": {
     "@types/node": "^13.13.2",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
+    "copyfiles": "^2.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
