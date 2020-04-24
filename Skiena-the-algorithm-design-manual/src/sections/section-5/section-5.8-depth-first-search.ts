@@ -1,5 +1,5 @@
 import { Graph } from "./Graph";
-import { Hooks } from "./Hooks";
+import { GraphTraveralHooks } from "./GraphTraveralHooks";
 
 let time = 0;
 const discovered: boolean[] = [];
@@ -10,7 +10,7 @@ const exitTime: number[] = [];
 
 // TODO Draw the depth-first search tree for this graph.
 // TODO Answer: why are we processing edges twice?
-export const dfs = (g: Graph, v: number, hooks?: Hooks): void => {
+export const dfs = (g: Graph, v: number, hooks?: GraphTraveralHooks): void => {
   discovered[v] = true;
   hooks?.processVertexEarly(v);
   entryTime[v] = time;

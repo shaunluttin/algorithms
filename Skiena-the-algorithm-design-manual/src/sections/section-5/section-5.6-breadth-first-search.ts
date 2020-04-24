@@ -1,7 +1,7 @@
 import getFigure from "../../figures/getFigure";
 import { dequeue, emptyQueue, enqueue, initQueue, Queue } from "../../queue";
 import { Graph } from "./Graph";
-import { Hooks } from "./Hooks";
+import { GraphTraveralHooks } from "./GraphTraveralHooks";
 import { readGraph } from "./section-5.2-data-structures-for-graphs";
 
 const discovered: boolean[] = [];
@@ -15,7 +15,11 @@ export const initializeSearch = (graph: Graph): void => {
   }
 };
 
-export const bfs = (g: Graph, start: number, hooks?: Hooks): void => {
+export const bfs = (
+  g: Graph,
+  start: number,
+  hooks?: GraphTraveralHooks
+): void => {
   const q: Queue<number> = initQueue();
   let v: number;
   let y: number;
