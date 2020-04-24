@@ -1,4 +1,5 @@
-import { EdgeNode } from './EdgeNode';
+import { EdgeNode } from "./EdgeNode";
+
 export type Graph = {
   edges: EdgeNode[];
   degree: number[];

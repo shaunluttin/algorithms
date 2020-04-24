@@ -1,5 +1,4 @@
 import os from "os";
-import getFigure from "../../figures/getFigure";
 import { Graph } from "./Graph";
 
 const initializeGraph = (): Graph => ({
@@ -56,7 +55,7 @@ export const readGraph = (graphData: string): Graph => {
   };
 };
 
-const printGraph = (g: Graph): string => {
+export const printGraph = (g: Graph): string => {
   let printGraph = "";
 
   for (let vertex = 1; vertex <= g.nvertices; vertex++) {
@@ -73,9 +72,3 @@ const printGraph = (g: Graph): string => {
 
   return printGraph;
 };
-
-// npm run tsnode 5.2-data-structures-for-graphs.ts
-const graph = readGraph(getFigure("5.4"));
-const graphString = printGraph(graph);
-
-console.log(`Here is the graph: ${os.EOL}${graphString}`);
