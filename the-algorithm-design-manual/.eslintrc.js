@@ -21,4 +21,12 @@ module.exports = {
   },
   plugins: ["@typescript-eslint"],
   rules: {},
+  overrides: [
+    {
+      files: ["*.js"],
+      rules: {
+        "@typescript-eslint/explicit-function-return-type": "off",
+      },
+    },
+  ],
 };
