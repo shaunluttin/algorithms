@@ -1,14 +1,16 @@
 import getFigure from "../figures/getFigure";
+import { dequeue, emptyQueue, enqueue, initQueue, Queue } from "../queue";
 import { Graph, readGraph } from "./section-5.2-data-structures-for-graphs";
-import {
-  dequeue,
-  emptyQueue,
-  enqueue,
-  initQueue,
-  processEdge,
-  processVertexEarly,
-  processVertexLate,
-} from "./todo";
+
+const processVertexEarly = (v: number): void => {
+  console.log(`processVertexEarly: ${v}`);
+};
+const processVertexLate = (v: number): void => {
+  console.log(`processVertexLate: ${v}`);
+};
+const processEdge = (x: number, y: number): void => {
+  console.log(`processEdge: ${x}${y}`);
+};
 
 const discovered: boolean[] = [];
 const processed: boolean[] = [];
@@ -22,11 +24,10 @@ const initializeSearch = (graph: Graph): void => {
 };
 
 const bfs = (g: Graph, start: number): void => {
-  let q: unknown;
+  const q: Queue<number> = initQueue();
   let v: number;
   let y: number;
 
-  initQueue(q);
   enqueue(q, start);
   discovered[start] = true;
 
