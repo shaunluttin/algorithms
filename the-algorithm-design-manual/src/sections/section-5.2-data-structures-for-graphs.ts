@@ -1,5 +1,5 @@
 import os from "os";
-import getFigure54 from "../figures/getFigure54";
+import getFigure from "../figures/getFigure";
 
 export type EdgeNode = {
   y: number;
@@ -87,7 +87,7 @@ const printGraph = (g: Graph): string => {
 };
 
 // npm run tsnode 5.2-data-structures-for-graphs.ts
-const graph = readGraph(getFigure54());
+const graph = readGraph(getFigure(5.4));
 const graphString = printGraph(graph);
 
 console.log(`Here is the graph: ${os.EOL}${graphString}`);
