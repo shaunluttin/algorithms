@@ -5,13 +5,17 @@ import { Graph } from "./Graph";
  * Create a new graph with empty arrays and zero values.
  *
  * Since we are numbering our edges starting at `1`, the `edges` and `degree`
- * arrays will always have `null` at index `0`.
+ * arrays will always have `0` and `null` at index `0` respectively.
  */
-const initializeGraph = (directed = false): Graph => ({
-  edges: [],
-  degree: [],
-  nvertices: 0,
-  nedges: 0,
+const initializeGraph = (
+  nvertices: number,
+  nedges: number,
+  directed = false
+): Graph => ({
+  edges: new Array(nvertices + 1).fill(null),
+  degree: new Array(nvertices + 1).fill(0),
+  nedges,
+  nvertices,
   directed,
 });
 
@@ -48,17 +52,13 @@ export const readGraph = (graphString: string): Graph => {
     .filter((line) => !line.startsWith("#"))
     .map((line) => line.split(" ").map((n) => parseInt(n, 10)));
 
-  const g = initializeGraph();
+  const g = initializeGraph(nvertices, nedges);
 
   for (const [x, y] of graphEdgeData) {
     insertEdge(g, [x, y]);
   }
 
-  return {
-    ...g,
-    nvertices,
-    nedges,
-  };
+  return g;
 };
 
 export const printGraph = (g: Graph): string => {
