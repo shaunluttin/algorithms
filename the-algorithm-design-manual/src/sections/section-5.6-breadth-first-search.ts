@@ -1,15 +1,16 @@
 import getFigure from "../figures/getFigure";
 import { dequeue, emptyQueue, enqueue, initQueue, Queue } from "../queue";
 import { Graph, readGraph } from "./section-5.2-data-structures-for-graphs";
+import {
+  processEdge,
+  processVertexEarly,
+  processVertexLate,
+} from "./section-5.6.1-exploiting-traveral";
 
-const processVertexEarly = (v: number): void => {
-  console.log(`processVertexEarly: ${v}`);
-};
-const processVertexLate = (v: number): void => {
-  console.log(`processVertexLate: ${v}`);
-};
-const processEdge = (x: number, y: number): void => {
-  console.log(`processEdge: ${x}${y}`);
+type Hooks = {
+  processVertexEarly: (v: number) => void;
+  processVertexLate: (v: number) => void;
+  processEdge: (x: number, y: number) => void;
 };
 
 const discovered: boolean[] = [];
@@ -23,7 +24,7 @@ const initializeSearch = (graph: Graph): void => {
   }
 };
 
-const bfs = (g: Graph, start: number): void => {
+const bfs = (g: Graph, start: number, hooks: Hooks): void => {
   const q: Queue<number> = initQueue();
   let v: number;
   let y: number;
@@ -33,14 +34,14 @@ const bfs = (g: Graph, start: number): void => {
 
   while (!emptyQueue(q)) {
     v = dequeue(q);
-    processVertexEarly(v);
+    hooks?.processVertexEarly(v);
     processed[v] = true;
 
     let p = g.edges[v];
     while (p) {
       y = p.y;
       if (!processed[y] || g.directed) {
-        processEdge(v, y);
+        hooks?.processEdge(v, y);
       }
 
       if (!discovered[y]) {
@@ -52,7 +53,7 @@ const bfs = (g: Graph, start: number): void => {
       p = p.next;
     }
 
-    processVertexLate(v);
+    hooks?.processVertexLate(v);
   }
 };
 
@@ -60,4 +61,8 @@ const graph = readGraph(getFigure(5.4));
 
 initializeSearch(graph);
 
-bfs(graph, 1);
+bfs(graph, 1, {
+  processEdge,
+  processVertexEarly,
+  processVertexLate,
+});
