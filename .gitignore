@@ -6,5 +6,8 @@ obj/
 out/
 node_modules/
 
+# Projects in Rust
+target/
+
 # Editing with Vim
 *.swp
