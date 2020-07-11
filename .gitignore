@@ -1,5 +1,10 @@
+# Projects in .NET
 bin/
 obj/
 
-*.swp
+# Projects in TypeScript/JavaScript
+out/
 node_modules/
+
+# Editing with Vim
+*.swp
